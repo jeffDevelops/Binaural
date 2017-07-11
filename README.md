@@ -1,1 +1,2 @@
 # Binaural
+Binaural is a aural skills teaching tool for anyone wishing to hone their music theory skills. Being able to accurately and quickly identify intervals is a critical skill for the live musician. It allows you to adjust your tuning on-the-fly, and if you want to improvise with other musicians, identifying intervallic relationships in and between chords is critical to your success in sounding... well, good. 
