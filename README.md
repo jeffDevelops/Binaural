@@ -3,7 +3,7 @@ Binaural is an aural skills teaching tool for anyone wishing to hone their music
 
 ## Wireframe
 ![Image of Binaural Wireframe]
-(https://github.com/jeffDevelops/Binaural/blob/master/Screen%20Shot%202017-07-10%20at%209.56.55%20PM.png)
+(https://github.com/jeffDevelops/Binaural/blob/master/Screen%20Shot%202017-07-10%20at%209.56.55%20PM.png?raw=true)
 
 ## App Overview
 Gameplay for this project will be simple: two players will compete for sixty seconds to guess as many aural intervallic relationships (played with audio snippets) as possible, and the player that correctly identifies more wins.
