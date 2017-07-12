@@ -58,14 +58,45 @@
 		 		<div class="player_caption"><h1 class="player one">Player</h1><h1 class="player_number one">1</h1></div>
 		 		<div class="player_caption second"><h1 class="player two">Player</h1><h1 class="player_number two">2</h1></div>
 		 	</div>
-		 			<main class="col-md-8 col-lg-8">
-			<div class="active_player top">
-					
+ 			<main class="col-md-8 col-lg-8">
+				<div class="active_player top">
+					<div class="container-fluid game_interface">
+						<div class="row">
+							<div class="col-lg-12 col-md-12"><h2 class="game_title">Intervals In Series</h2></div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-lg-3 interface_column">
+								<button id="replay"></button>
+								<button id="augmented" class="guess quality">Augmented</button>
+								<button id="major" class="guess quality">Major</button>
+								<button id="perfect" class="guess quality">Perfect</button>
+								<button id="minor" class="guess quality">minor</button>
+								<button id="diminished" class="guess quality">diminished</button>
+							</div>
+							<div class="col-md-3 col-lg-3 interface_column">
+								<button id="octave" class="guess interval first">Octave</button>
+								<button id="seventh" class="guess interval">Seventh</button>
+								<button id="sixth" class="guess interval">Sixth</button>
+								<button id="fifth" class="guess interval">Fifth</button>
+								<button id="fourth" class="guess interval">Fourth</button>
+								<button id="third" class="guess interval">Third</button>
+								<button id="second" class="guess interval">Second</button>
+								<button id="unison" class="guess interval">Unison</button>
+							</div>
+							<div class="col-md-6 col-lg-6 interface_column third">
+								<h1 class="gameplay_label">TIME REMAINING</h1>
+								<h1 class="gameplay_data">60</h1>
+								<h1 class="gameplay_label">SCORE</h1>
+								<h1 class="gameplay_data">0</h1>
+								<button id="submit">Next Interval</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="inactive_player bottom">
+				
 			</div>
-			<div class="inactive_player bottom">
-			
-			</div>
-		</main>
+			</main>
 		</div>
 </body>
 </html>
