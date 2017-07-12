@@ -1,0 +1,262 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100vw;
+	height: 100%
+	border: 1px solid transparent;
+	font-family: 'Muli';
+}
+
+.landing_container {
+	background: #fff;
+	width: 100vw;
+	height: 100vh;
+	margin: 1.5vh auto 1.5vh auto;
+	border: 1px solid transparent;
+}
+
+.col-md-12, .col-lg-12, .col-md-8, .col-lg-8, .col-md-4, .col-lg-4, .col-md-3, .col-lg-3, .col-md-1, .col-lg-1 {
+	padding: 0; /* Removes default padding */
+}
+
+nav {
+	display: inline-block;
+	height: 10vh;
+	width: 98vw;
+}
+
+nav ul {
+	display: block;
+	list-style: none; /* removes bullets */
+	text-align: right;
+	padding: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	font-size: 1.3em;
+	font-weight: 300;
+	padding: 10px 40px 0 0;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: rgb(164, 0, 255);
+}
+
+nav ul li a:hover {
+	color: rgb(254, 0, 66);
+	text-decoration: none;
+	-webkit-transition: color .6s;
+	-moz-transition: color .6s;
+	-ms-transition: color .6s;
+	-o-transition: color .6s;
+	transition: color .6s;
+}
+
+
+.logo_image {
+	display: block;
+	margin: 33vh auto;
+	width: 12vw;
+}
+
+.logo_large {
+	position: absolute;
+	bottom: 10vh;
+	left: 10vw;
+	font-size: 5em;
+	font-weight: 300;
+	background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -ms-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -o-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	color: transparent;
+	-webkit-background-clip: text; /* Gradient-text is only suuported in Webkit. */
+	background-clip: text;
+}
+
+.tagline {
+	padding-left: 1.5vw;
+	font-size: .5em;
+	font-style: italic;
+	color: rgb(164, 0, 255);
+}
+
+/******* GAME PAGE *********/
+
+.container-fluid {
+	padding: 0;
+}
+
+.row {
+	margin: 0 0 0 0;
+}
+
+.nav_logo {
+	display: block;
+	text-align: center;
+	margin: 25px 0 0 0;
+	font-size: 2.2em;
+	background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -ms-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -o-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
+	color: transparent;
+	-webkit-background-clip: text; /* Gradient-text is only suuported in Webkit. */
+	background-clip: text;
+}
+
+.nav_logo:hover {
+	background-image: -webkit-linear-gradient(left,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -moz-linear-gradient(left,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -ms-linear-gradient(left,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -o-linear-gradient(left,rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: linear-gradient(left,rgb(164, 0, 255), rgb(254, 0, 66));
+	color: transparent;
+	-webkit-background-clip: text; /* Gradient-text is only suuported in Webkit. */
+	background-clip: text;
+}
+
+.game_nav {
+	width: 100%;
+}
+
+.game_nav ul {
+	margin: 0;
+}
+
+.game_nav ul li {
+	padding: 38px 7vw 0 0;
+}
+
+aside {
+	margin: 0;
+	padding: 0;
+	
+	width: 100%;
+	height: 800px;
+	background-image: -webkit-linear-gradient(top, rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: -o-linear-gradient(top, rgb(164, 0, 255), rgb(254, 0, 66));
+	background-image: linear-gradient(top, rgb(164, 0, 255), rgb(254, 0, 66));
+	color: #fff;
+}		
+
+aside h2 {
+	padding: 30px 0 0 0;
+	text-align: center;
+	font-size: 1.8em;
+	font-weight: 200;
+	margin: 0;
+}
+
+aside nav {
+	width: 100%;
+}
+
+aside nav ul {
+	width: 100%;
+	padding: 0;
+}
+
+aside ul li {
+	width: 100%;
+	text-align: center;
+	display: block;
+	padding: 5px 0;
+}
+
+aside ul li a {
+	display: block;
+	width: 100%;
+	padding: 5px 0;
+	color: #fff;
+	font-weight: 200;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+
+aside ul li a:hover {
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+	color: #fff;
+}
+
+aside ul li a:active, 
+aside ul li a:visited,
+aside ul li a:focus {
+	text-decoration: none;
+	color: #fff;
+}
+
+.players_indicator {
+	height: 800px;
+}
+
+.player_caption {
+	margin: 200px 0;
+}
+
+.second {
+	margin: 300px 0 0 0;
+}
+
+.players_indicator .player, .players_indicator .player_number {
+	margin: 0; /* removes default margin */
+	text-align: center;
+}
+
+.player {
+	font-size: 1em;
+	font-weight: 200;
+}
+
+.player_number {
+	font-size: 6em;
+	font-weight: 200;
+	line-height: .8em;
+}
+
+.one {
+	color: rgb(164, 0, 255);
+	font-weight: 200;
+}
+
+.two {
+	color: rgb(254, 0, 66);
+	font-weight: 200;
+}
+
+main {
+	height: 800px;
+}
+
+.top {
+	border-bottom: 5px solid #fff;
+	background: rgb(164, 0, 255);
+	background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
+	background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
+	background-image: -ms-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
+	background-image: -o-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
+	background-image: linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 255));
+}
+
+.active_player {
+	height: 500px;
+	width: 100%;
+}
+
+.bottom {
+	height: 300px;
+	background-image: -webkit-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+	background-image: -moz-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+	background-image: -ms-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+	background-image: -o-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+	background-image: linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+}
+

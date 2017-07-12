@@ -43,7 +43,7 @@ The list below shows the most common name of each interval first. My game will r
 
 * Perfect 5th: first interval of the Strauss tone poem *Also Sprach Zarathustra*, more commonly known as the opening music to *2001: A Space Odyssey*. [A beautiful rendition of that.](https://www.youtube.com/watch?v=wpFQLw5_N2o) Also, the first interval of the *Star Wars* main theme.
 
-* Minor 6th/Augmented 5th: if you can find a better one, let me know... the interval between "God" and "was" in "What if God Was One of Us?"
+* minor 6th/Augmented 5th: if you can find a better one, let me know... the interval between "God" and "was" in "What if God Was One of Us?"
 
 * Major 6th: first interval of "My Bonnie Lies Over the Ocean"
 
@@ -54,6 +54,11 @@ The list below shows the most common name of each interval first. My game will r
 * Perfect Octave/Augmented 7th/diminished 9th (for the love of God, don't call it that unless it's written that way): If you can't just tell that it's the same note but an octave above, the first interval of "Somewhere Over the Rainbow" should do the trick.
 
 [One last opening credits fail.](https://www.youtube.com/watch?v=Yp_LQDn0W04)
+
+Agile Summary
+Working together
+Welcome changing requirements
+Sustainable development practices
 
 
 
