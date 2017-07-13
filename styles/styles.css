@@ -332,11 +332,11 @@ div.col-md-6.col-lg-6.interface_column {
 .guess:hover {
 	width: 95%;
 	background: rgba(255, 255, 255, 1);
-	-webkit-transition: all .6s;
-	-moz-transition: all .6s;
-	-ms-transition: all .6s;
-	-o-transition: all .6s;
-	transition: all .6s;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
 	color: rgb(164, 0, 255);
 }
 
@@ -368,11 +368,11 @@ div.col-md-6.col-lg-6.interface_column {
 
 #submit:hover {
 	background: rgba(255, 255, 255, 1);
-	-webkit-transition: all .6s;
-	-moz-transition: all .6s;
-	-ms-transition: all .6s;
-	-o-transition: all .6s;
-	transition: all .6s;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	-ms-transition: all .3s;
+	-o-transition: all .3s;
+	transition: all .3s;
 	color: rgb(164, 0, 255);
 }
 
@@ -389,10 +389,61 @@ div.col-md-6.col-lg-6.interface_column {
 	margin: -15px 0 0 0;
 	text-align: right;
 	font-family: 'Muli', sans-serif;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 3em;
 	color: #fff;
 }
+
+.instructions {
+	position: absolute;
+	z-index: 2;
+	display: block;
+	top: 25vh;
+	left: 32vw;
+	width: 40%;
+	height: 450px;
+	border: 2px solid #fff;
+	background-image: -webkit-linear-gradient(bottom, rgba(164, 0, 255, .5), rgba(254, 0, 66, .5));
+	background-image: -o-linear-gradient(bottom, rgba(164, 0, 255, .5), rgba(254, 0, 66, .5));
+	background-image: linear-gradient(bottom, rgba(164, 0, 255, .5), rgba(254, 0, 66, .5));
+}
+
+.blur {
+	display: none;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	background: rgba(0, 0, 0, .8);
+}
+
+.instructions .parent {
+	width: 90%;
+	margin:  0 auto;
+}
+
+.instructions p {
+	font-size: 1.5em;
+	text-align: justify;
+	color: #fff;
+}
+
+.instructions button {
+	height: 40px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.instructions button:hover {
+	width: 100%;
+}
+
+.instructions.times_up {
+	height: 250px;
+}
+
 
 
 

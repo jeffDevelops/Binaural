@@ -55,10 +55,27 @@ The list below shows the most common name of each interval first. My game will r
 
 [One last opening credits fail.](https://www.youtube.com/watch?v=Yp_LQDn0W04)
 
-Agile Summary
-Working together
-Welcome changing requirements
-Sustainable development practices
+## Developer Journal
+
+### Wednesday 
+
+My UI looks wonderful, but I haven't even touched my js file yet. Is this bad? Don't I need an idea of what things look like on the page before my JS starts interacting with it?
+
+#### Concepts I learned today: 
+
+* Just the grid system from Bootstrap is nifty for getting things into horizontal alignment. I'm spending a lot of time overriding Bootstrap default padding and margin for these column containers, though. Is it worth it for future projects? I think yes.
+
+### Thursday 
+
+Getting started with functionality! This is starting to get really fun! Mapping individual audio files to properties of an object takes a long time. Any time a similar task is involved with a future project, I know not to use the CLI, and use Finder instead so that I can move a whole group of downloaded files into my project assets folder.
+
+#### Concepts I learned today: 
+
+* Structuring your data is crucial to your success. If you don't think ahead, you're going to find yourself in ruts when trying to access the data you need. OOP to the rescue!
+
+* Audio files need to be reloaded in Chrome in order to play the same audio file twice in a row! BUT! They must NOT be reloaded in Firefox! This was frustrating, but solved with a simple if(window.chrome) statement.
+
+
 
 
 
