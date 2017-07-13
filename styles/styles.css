@@ -340,6 +340,12 @@ div.col-md-6.col-lg-6.interface_column {
 	color: rgb(164, 0, 255);
 }
 
+.guess.active {
+	color: rgb(164, 0, 255);
+	background: #fff;
+	outline: none;
+}
+
 .interval.first {
 	margin-top: 1px;
 }
