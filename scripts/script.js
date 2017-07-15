@@ -305,7 +305,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 5;
+  timerElement.textContent = 0;
   var countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
@@ -321,16 +321,31 @@ function loadPlayerTwoUI() {
   var timesUpButton = document.querySelector('.times_up button');
   var topSection = document.querySelector('.top');
   var bottomSection = document.querySelector('.bottom');
-  timesUpButton.addEventListener('click', function() {
+  var replayButton = document.getElementById('replay');
+
+
+  setTimeout(function() {
     timesUpModal.style.display = 'none';
-    gameInterface.style.opacity = '0';
-    gameInterface.style.display = 'none';
-    topSection.style.height = '300px';
-    bottomSection.style.height = '500px';
-    bottomSection.appendChild(gameInterface);
-    gameInterface.style.display = 'block';
-    timesUpButton.removeEventListener('click', arguments.callee);
-  });
+    gameInterface.classList.toggle('fade-out');
+    replayButton.classList.add('replay_button_animation');
+    setTimeout(function() {
+      gameInterface.style.display = 'none';
+      topSection.style.height = '300px';
+      bottomSection.style.height = '500px';
+      bottomSection.appendChild(gameInterface);
+      setTimeout(function() {
+        gameInterface.style.display = 'block';
+        setTimeout(function() {
+          gameInterface.classList.toggle('fade-out');
+          setTimeout(function() {
+            replayButton.classList.remove('replay_button_animation');
+            setTimeout(function() {
+            }, 200);
+          }, 200);
+        }, 200);
+      }, 201);
+    }, 1001);
+  }, 5000);
 }
 
 document.addEventListener("DOMContentLoaded", function() {

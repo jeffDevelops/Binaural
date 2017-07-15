@@ -262,11 +262,39 @@ main {
 	background-image: -ms-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: -o-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+	-webkit-transition: height 1s;
+	-moz-transition: height 1s;
+	-ms-transition: height 1s;
+	-o-transition: height 1s;
+	transition: height 1s;
 }
 
 .game_interface {
 	padding: 0 2vw;
 	opacity: 1;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+.fade-out {
+	opacity: 0;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+.fade-in {
+	opacity: 1;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
 }
 
 .game_title {
@@ -308,6 +336,19 @@ div.col-md-6.col-lg-6.interface_column {
 }
 
 #replay:hover {
+	-webkit-transition: all 1.2s;
+	-moz-transition: all 1.2s;
+	-ms-transition: all 1.2s;
+	-o-transition: all 1.2s;
+	transition: all 1.2s;
+	-webkit-transform: rotateZ(-360deg);
+	-moz-transform: rotateZ(-360deg);
+	-ms-transform: rotateZ(-360deg);
+	-o-transform: rotateZ(-360deg);
+	transform: rotateZ(-360deg);
+}
+
+.replay_button_animation {
 	-webkit-transition: all 1.2s;
 	-moz-transition: all 1.2s;
 	-ms-transition: all 1.2s;
@@ -453,8 +494,23 @@ div.col-md-6.col-lg-6.interface_column {
 }
 
 .instructions.times_up {
-	height: 250px;
+	height: 200px;
 }
+
+.instructions.times_up h1 {
+	text-align: center;
+	margin: 60px auto;
+}
+
+.correctness {
+	height: 200px;
+}
+
+.correctness h1 {
+	text-align: center;
+	margin: 60px auto;
+}
+
 
 
 
