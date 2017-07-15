@@ -1,44 +1,18 @@
 //Declare pitches as objects with semitones (their numeric value within an octave). The '4' in the variable names indicates that these pitches are in octave 4 of the keyboard. A full implementation of this app would involve mapping all 88 keys from A0 - C9 rather than the 13 that represent the complete octave.
 
-var c4 = {
-  semitone: 1,
-};
-var dFlat4 = {
-  semitone: 2
-};
-var d4 = {
-  semitone: 3
-};
-var eFlat4 = {
-  semitone: 4
-};
-var e4 = {
-  semitone: 5
-};
-var f4 = {
-  semitone: 6
-};
-var gFlat4 = {
-  semitone: 7
-};
-var g4 = {
-  semitone: 8
-};
-var aFlat4 = {
-  semitone: 9
-};
-var a4 = {
-  semitone: 10
-};
-var bFlat4 = {
-  semitone: 11
-};
-var b4 = {
-  semitone: 12
-};
-var c5 = {
-  semitone: 13
-};
+var c4 =      {semitone: 1};
+var dFlat4 =  {semitone: 2};
+var d4 =      {semitone: 3};
+var eFlat4 =  {semitone: 4};
+var e4 =      {semitone: 5};
+var f4 =      {semitone: 6};
+var gFlat4 =  {semitone: 7};
+var g4 =      {semitone: 8};
+var aFlat4 =  {semitone: 9};
+var a4 =      {semitone: 10};
+var bFlat4 =  {semitone: 11};
+var b4 =      {semitone: 12};
+var c5 =      {semitone: 13};
 
 var pitchArray = [c4, dFlat4, d4, eFlat4, e4, f4, gFlat4, g4, aFlat4, g4, aFlat4, a4, bFlat4, b4, c5];
 
@@ -68,53 +42,75 @@ var userAnswer = {};
 var answerForQuality;
 var answerForNumber;
 
+//Game Variables
+var timerElement;
+
+var score = document.getElementById('score'); //a variable that represents the current player score
+score.innerText = 0;
+
+var player1Score; //set equal to current player's score at end of timer
+var player2Score; //set equal to current player's score at end of timer
+
+
+
+//DOM stuff that needs to be accessible to multiple functions
+var qualityButtons = document.querySelectorAll('.quality');
+var numberButtons = document.querySelectorAll('.interval');
+
 //Show a game instructions dialog, trigger beginning of game when button is clicked.
-function instructUser() {
+function startRound() {
   var instructionsModal = document.querySelector('.blur');
   instructionsModal.style.display = 'block';
   var instrModalButton = document.querySelector('.instructions button');
   instrModalButton.addEventListener('click', function() {
     instructionsModal.style.display = 'none';
     startTimer();
-    assignPitches();
-    playPitches();
-    getCorrectAnswer(pitch1, pitch2);
-    getUserAnswer();
+    playRound();
+    instrModalButton.removeEventListener('click', arguments.callee);
   });
 }
 
-function getUserAnswer() {
-  //Get user's answer for interval QUALITY
-  var qualityButtons = document.querySelectorAll('.quality');
-  qualityButtons.forEach(function(element) {
-    element.addEventListener('click', function() {
-      //Radio-button-esque buttons (remove active class from all buttons so only one is white at a time)
-      qualityButtons.forEach(function(siblings) {
-        siblings.classList.remove('active');
-      });
-      //Make it easy for user to see what they're guessing
-      element.classList.add('active');
-      //Record user's answer to userAnser object
-      answerForQuality = element.getAttribute('id');
-    });
-  });
-  //Get user's answer for interval NUMBER
-  var numberButtons = document.querySelectorAll('.interval');
-  numberButtons.forEach(function(element) {
-    element.addEventListener('click', function() {
-      numberButtons.forEach(function(siblings) {
-        siblings.classList.remove('active');
-      });
-      element.classList.add('active');
-      answerForNumber = element.getAttribute('id');
-    });
-  });
-  var submitButton = document.getElementById('submit');
-  submitButton.addEventListener('click', function() {
-    userAnswer.quality = answerForQuality; //global object userAnswer's quality property gets set to whatever button the user clicked
-    userAnswer.number = answerForNumber; //samesies
-    console.log(userAnswer);
-    return userAnswer;
+function playRound() {
+  questionPrompt();
+}
+
+function questionPrompt() {
+  assignPitches();
+  getCorrectAnswer(pitch1, pitch2);
+  getUserAnswer();
+}
+
+//Generate a random number between 1-12
+function randomNum0Thru12() {
+  var random = Math.floor(Math.random() * 12);
+  return random;
+}
+
+//Pick a random pitch to play by passing the return value of a random number generator function (below) to this function, which selects the callback's return value as the index of our array of pitch objects.
+function objectifyRandomPitch(randomNumber) { //please pass in randomNum0Thru12() as callback, for desired results
+  randomPitch = pitchArray[randomNumber];
+    return randomPitch;
+}
+
+//Store two random pitches as objects
+function assignPitches() {
+  pitch1 = objectifyRandomPitch(randomNum0Thru12());
+  pitch2 = objectifyRandomPitch(randomNum0Thru12());
+  console.log('pitch1: ' + pitch1.semitone + ', pitch2: ' + pitch2.semitone);
+  playPitches(pitch1, pitch2);
+}
+
+//Play the pitches to the user as the prompt for each question.
+function playPitches(pitch1, pitch2) {
+  //An element must be reloaded in Chrome or it will only play once
+  //An element must not be reloaded in Firefox or there will be a delay
+  console.log(pitch1.audio);
+  pitch1.audio.play(); //Play first pitch
+  console.log(pitch2.audio);
+  pitch1.audio.addEventListener('ended', function() {
+    pitch2.audio.play();
+    console.log('2: ' + pitch2.semitone);
+    pitch1.audio.removeEventListener('ended', arguments.callee);
   });
 }
 
@@ -122,10 +118,9 @@ function getUserAnswer() {
 function getCorrectAnswer(pitch1, pitch2) {
   var diff = Math.abs(pitch1.semitone - pitch2.semitone);
   switch(diff) {
-    case 0: 
+    case 0:
       acceptableAnswers = [
         {quality: "perfect", number: "unison"},
-        {quality: "augmented", number: "seventh"},
         {quality: "diminished", number: "second"},
       ];
       break;
@@ -144,7 +139,7 @@ function getCorrectAnswer(pitch1, pitch2) {
     case 3:
       acceptableAnswers = [
         {quality: "minor", number: "third"},
-        {quality: "diminished", number: "fourth"},
+        {quality: "augmented", number: "second"},
       ];
       break;
     case 4:
@@ -165,7 +160,7 @@ function getCorrectAnswer(pitch1, pitch2) {
         {quality: "diminished", number: "fifth"},
       ];
       break;
-    case 7: 
+    case 7:
       acceptableAnswers = [
         {quality: "perfect", number: "fifth"},
         {quality: "diminished", number: "sixth"},
@@ -195,7 +190,7 @@ function getCorrectAnswer(pitch1, pitch2) {
         {quality: "diminished", number: "fifth"},
       ];
       break;
-    case 12: 
+    case 12:
       acceptableAnswers = [
         {quality: "perfect", number: "octave"},
         {quality: "augmented", number: "seventh"},
@@ -203,74 +198,142 @@ function getCorrectAnswer(pitch1, pitch2) {
       ];
       break;
   }
+
   console.log('diff: ' + diff);
   console.log('Acceptable answers: ' + acceptableAnswers[0].quality + ' ' + acceptableAnswers[0].number);
   console.log('Acceptable answers: ' + acceptableAnswers[1].quality + ' ' + acceptableAnswers[1].number);
-  if(acceptableAnswers[2]) {
-    console.log('Acceptable answers: ' + acceptableAnswers[2].quality + ' ' + acceptableAnswers[2].number); //will throw error if no third array index 
-  } else { 
-    console.log("No third acceptable answer for this interval");
-  }
+  diff = null;
   return acceptableAnswers;
 }
 
-//Play the pitches to the user as the prompt for each question.
-function playPitches() {
-  //An element must be reloaded in Chrome or it will only play once
-  //An element must not be reloaded in Firefox or there will be a delay
-  pitch1.audio.play(); //Play first pitch
-  console.log('1: ' + pitch1.semitone);
-  if (pitch1.audio == pitch2.audio && window.chrome) { //Load it again if Chrome, if anything else, don't
-    pitch2.audio.load();
-  }
-  setTimeout(function() {
-    pitch2.audio.play();
-    console.log('2: ' + pitch2.semitone);
-  }, 1000);
+function getUserAnswer() {
+  answerForQuality = '';
+  answerForNumber = '';
+  //Get user's answer for interval QUALITY
+  qualityButtons.forEach(function(element) {
+    element.addEventListener('click', function() {
+      //Radio-button-esque buttons (remove active class from all buttons so only one is white at a time)
+      qualityButtons.forEach(function(siblings) {
+        siblings.classList.remove('active');
+      });
+      //Make it easy for user to see what they're guessing
+      element.classList.add('active');
+      //Record user's answer to userAnser object
+      answerForQuality = element.getAttribute('id');
+    });
+  });
+  //Get user's answer for interval NUMBER
+  numberButtons.forEach(function(element) {
+    element.addEventListener('click', function() {
+      numberButtons.forEach(function(siblings) {
+        siblings.classList.remove('active');
+      });
+      element.classList.add('active');
+      answerForNumber = element.getAttribute('id');
+    });
+  });
+  var submitButton = document.getElementById('submit');
+  submitButton.addEventListener('click', function() {
+    userAnswer.quality = answerForQuality; //global object userAnswer's quality property gets set to whatever button the user clicked
+    userAnswer.number = answerForNumber; //samesies
+    //Reset the buttons
+    qualityButtons.forEach(function(element) {
+      element.classList.remove('active');
+    });
+    numberButtons.forEach(function(element) {
+      element.classList.remove('active');
+    });
+    console.log(userAnswer);
+    console.log('User Answer: ' + userAnswer.quality + ' ' + userAnswer.number);
+    checkUserAnswer();
+    submitButton.removeEventListener('click', arguments.callee);
+  });
 }
 
-//Store two random pitches as objects
-function assignPitches() {
-  pitch1 = objectifyRandomPitch(randomNum0Thru12());
-  pitch2 = objectifyRandomPitch(randomNum0Thru12());
-  console.log('pitch1: ' + pitch1.semitone + ', pitch2: ' + pitch2.semitone);
+function checkUserAnswer() {
+  console.log(acceptableAnswers);
+  var isCorrect = false;
+  //FOR LOOP THIS INSTEAD
+  for (var i = 0; i < acceptableAnswers.length; i++) {
+    if (userAnswer.quality == acceptableAnswers[i].quality && userAnswer.number == acceptableAnswers[i].number) {
+      console.log('CORRECT');
+      var correctModal = document.querySelectorAll('.blur')[2];
+      correctModal.style.display = 'block';
+      isCorrect = true;
+      break;
+    }
+  }
+  if(isCorrect) {
+    setTimeout(function() {
+      correctModal.style.display = 'none';
+    }, 700);
+      score.innerText++;
+  } else {
+    console.log('INCORRECT');
+    var incorrectModal = document.querySelectorAll('.blur')[3];
+    incorrectModal.style.display = 'block';
+    setTimeout(function() {
+      incorrectModal.style.display = 'none';
+    }, 700); 
+  }
+  isCorrect = false;
+  reset();
+}
+
+function reset() { //resets all game objects to empty to await new inputs from random pitch generator and user
+  randomPitch = {};
+  pitch1 = {};
+  pitch2 = {};
+  acceptableAnswers = [];
+  userAnswer= {};
+  answerForQuality = '';
+  answerForNumber = '';
+  checkTimer();
+}
+
+function checkTimer() {
+  if(timerElement.textContent > 0) {
+    questionPrompt();
+  } else {
+    var player1DoneModal = document.querySelectorAll('.blur')[1];
+    player1DoneModal.style.display = 'block';
+
+    return;
+  }
 }
 
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 60;
+  timerElement.textContent = 5;
   var countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
     } else {
-      var player1DoneModal = document.querySelectorAll('.blur')[1];
-      player1DoneModal.style.display = 'block';
-      return;
+      return false;
     }
   }, 1000);
 }
 
-//Pick a random pitch to play by passing the return value of a random number generator function (below) to this function, which selects the callback's return value as the index of our array of pitch objects.
-function objectifyRandomPitch(randomNumber) { //please pass in randomNum0Thru12() as callback, for desired results
-  randomPitch = pitchArray[randomNumber];
-    return randomPitch;
-}
-
-//Generate a random number between 1-12
-function randomNum0Thru12() {
-  var random = Math.floor(Math.random() * 12);
-  return random;
+function loadPlayerTwoUI() {
+  var gameInterface = document.querySelector('.game_interface');
+  var timesUpModal = document.querySelectorAll('.blur')[1];
+  var timesUpButton = document.querySelector('.times_up button');
+  var topSection = document.querySelector('.top');
+  var bottomSection = document.querySelector('.bottom');
+  timesUpButton.addEventListener('click', function() {
+    timesUpModal.style.display = 'none';
+    gameInterface.style.opacity = '0';
+    gameInterface.style.display = 'none';
+    topSection.style.height = '300px';
+    bottomSection.style.height = '500px';
+    bottomSection.appendChild(gameInterface);
+    gameInterface.style.display = 'block';
+    timesUpButton.removeEventListener('click', arguments.callee);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-
-  
-  instructUser();
-
-
-
-
-
-
+  startRound();
+  loadPlayerTwoUI();
 });

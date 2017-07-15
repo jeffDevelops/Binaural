@@ -87,7 +87,7 @@
 								<h1 class="gameplay_label">TIME REMAINING</h1>
 								<h1 id="timer" class="gameplay_data">60</h1>
 								<h1 class="gameplay_label">SCORE</h1>
-								<h1 class="gameplay_data">0</h1>
+								<h1 id="score" class="gameplay_data">0</h1>
 								<button id="submit">Next Interval</button>
 							</div>
 						</div>
@@ -115,8 +115,23 @@
 			<div class="instructions times_up">
 				<div class="parent">
 					<h1 class="game_title">Time's Up!</h1>
-					<p>Player 2! Ready? Set...</p>
-					<button class="guess">Go!</button>
+					<button class="guess">Okay</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="blur">
+			<div class="instructions correct">
+				<div class="parent">
+					<h1 class="game_title">Correct!</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="blur">
+			<div class="instructions incorrect">
+				<div class="parent">
+					<h1 class="game_title">Incorrect</h1>
 				</div>
 			</div>
 		</div>
@@ -124,7 +139,7 @@
 	<!-- AUDIO FILES-->
 	<audio id="c4" src="assets/audio/c4.wav"></audio>
 	<audio id="dFlat4" src="assets/audio/dFlat4.wav"></audio>
-	<audio id="d4" src="assets/audio/c4.wav"></audio>
+	<audio id="d4" src="assets/audio/d4.wav"></audio>
 	<audio id="eFlat4" src="assets/audio/eFlat4.wav"></audio>
 	<audio id="e4" src="assets/audio/e4.wav"></audio>
 	<audio id="f4" src="assets/audio/f4.wav"></audio>
