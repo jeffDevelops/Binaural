@@ -56,6 +56,8 @@ var player2Score; //set equal to current player's score at end of timer
 //DOM stuff that needs to be accessible to multiple functions
 var qualityButtons = document.querySelectorAll('.quality');
 var numberButtons = document.querySelectorAll('.interval');
+var player1DoneModal = document.querySelectorAll('.blur')[1];
+var player2Modal = document.querySelectorAll('.blur')[4];
 
 //Show a game instructions dialog, trigger beginning of game when button is clicked.
 function startRound() {
@@ -67,6 +69,12 @@ function startRound() {
     startTimer();
     playRound();
     instrModalButton.removeEventListener('click', arguments.callee);
+  });
+  player2Modal.addEventListener('click', function() {
+    player2Modal.style.display = 'none';
+    startTimer();
+    playRound();
+    player2Modal.removeEventListener('click', arguments.callee);
   });
 }
 
@@ -295,9 +303,8 @@ function checkTimer() {
   if(timerElement.textContent > 0) {
     questionPrompt();
   } else {
-    var player1DoneModal = document.querySelectorAll('.blur')[1];
     player1DoneModal.style.display = 'block';
-
+    loadPlayerTwoUI();
     return;
   }
 }
@@ -305,7 +312,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 0;
+  timerElement.textContent = 60;
   var countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
@@ -317,15 +324,13 @@ function startTimer() {
 
 function loadPlayerTwoUI() {
   var gameInterface = document.querySelector('.game_interface');
-  var timesUpModal = document.querySelectorAll('.blur')[1];
   var timesUpButton = document.querySelector('.times_up button');
   var topSection = document.querySelector('.top');
   var bottomSection = document.querySelector('.bottom');
   var replayButton = document.getElementById('replay');
 
-
   setTimeout(function() {
-    timesUpModal.style.display = 'none';
+    player1DoneModal.style.display = 'none';
     gameInterface.classList.toggle('fade-out');
     replayButton.classList.add('replay_button_animation');
     setTimeout(function() {
@@ -340,15 +345,15 @@ function loadPlayerTwoUI() {
           setTimeout(function() {
             replayButton.classList.remove('replay_button_animation');
             setTimeout(function() {
-            }, 200);
+              player2Modal.style.display = 'block';
+            }, 1000);
           }, 200);
         }, 200);
       }, 201);
     }, 1001);
-  }, 5000);
+  }, 3000);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
   startRound();
-  loadPlayerTwoUI();
 });
