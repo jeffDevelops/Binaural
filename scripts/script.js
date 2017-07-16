@@ -117,7 +117,7 @@ function assignPitches() {
 }
 
 //Play the pitches to the user as the prompt for each question.
-function playPitches(pitch1, pitch2) {
+function playPitches() {
   //An element must be reloaded in Chrome or it will only play once
   //An element must not be reloaded in Firefox or there will be a delay
   console.log(pitch1.audio);
@@ -223,6 +223,8 @@ function getCorrectAnswer(pitch1, pitch2) {
 }
 
 function getUserAnswer() {
+  var replayButton = document.getElementById('replay');
+  replayButton.addEventListener('click', playPitches); 
   answerForQuality = '';
   answerForNumber = '';
   //Get user's answer for interval QUALITY
@@ -250,6 +252,7 @@ function getUserAnswer() {
   });
   var submitButton = document.getElementById('submit');
   submitButton.addEventListener('click', function() {
+    replayButton.removeEventListener('click', playPitches);
     userAnswer.quality = answerForQuality; //global object userAnswer's quality property gets set to whatever button the user clicked
     userAnswer.number = answerForNumber; //samesies
     //Reset the buttons
@@ -358,6 +361,7 @@ function loadPlayerTwoUI() {
       }
       return;
     } else {
+      score.innerText = 0;
       gameInterface.classList.toggle('fade-out');
       playerStatus.classList.add('fade-out');
       replayButton.classList.add('replay_button_animation');
