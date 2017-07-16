@@ -151,17 +151,20 @@ aside {
 aside h2 {
 	padding: 30px 0 0 0;
 	text-align: center;
-	font-size: 1.8em;
+	font-size: 2.5em;
 	font-weight: 200;
 	margin: 0;
 }
 
 aside nav {
+	margin: 50px 0 0 0;
+	height: 600px;
 	width: 100%;
 }
 
 aside nav ul {
 	width: 100%;
+	margin: 10px 0 0 0;
 	padding: 0;
 }
 
@@ -199,12 +202,12 @@ aside ul li a:focus {
 	height: 800px;
 }
 
-.player_caption {
-	margin: 200px 0;
+.first  {
+	margin: 100px 0;
 }
 
 .second {
-	margin: 300px 0 0 0;
+	margin: 400px 0 0 0;
 }
 
 .players_indicator .player, .players_indicator .player_number {
@@ -240,6 +243,7 @@ main {
 .top {
 	height: 500px;
 	width: 100%;
+	border: 1px solid transparent;
 	border-bottom: 5px solid #fff;
 	background: rgb(164, 0, 255);
 	background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
@@ -262,6 +266,7 @@ main {
 	background-image: -ms-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: -o-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
+	border: 1px solid transparent;
 	-webkit-transition: height 1s;
 	-moz-transition: height 1s;
 	-ms-transition: height 1s;
@@ -391,6 +396,14 @@ div.col-md-6.col-lg-6.interface_column {
 	outline: none;
 }
 
+.bottom .guess:hover { 
+	color: rgb(254, 0, 66);
+}
+
+.bottom .guess.active {
+	color: rgb(254, 0, 66);
+}
+
 .interval.first {
 	margin-top: 1px;
 }
@@ -425,6 +438,16 @@ div.col-md-6.col-lg-6.interface_column {
 	-o-transition: all .3s;
 	transition: all .3s;
 	color: rgb(164, 0, 255);
+}
+
+#submit:active, #submit:focus {
+	outline: none;
+}
+
+.bottom #submit:hover,
+.bottom #submit:active,
+.bottom #submit:focus {
+	color: rgb(254, 0, 66);
 }
 
 .gameplay_label {
@@ -509,6 +532,18 @@ div.col-md-6.col-lg-6.interface_column {
 .correctness h1 {
 	text-align: center;
 	margin: 60px auto;
+}
+
+/*Injected with JS innerHTML*/
+.inactive_player_status { 
+	display: block;
+	width: 70%;
+	margin: 110px auto;
+	text-align: right;
+	font-style: italic;
+	color: #fff;
+	font-weight: 200;
+	font-size: 2.5em;
 }
 
 

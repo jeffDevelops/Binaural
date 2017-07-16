@@ -48,37 +48,43 @@ var timerElement;
 var score = document.getElementById('score'); //a variable that represents the current player score
 score.innerText = 0;
 
-var player1Score; //set equal to current player's score at end of timer
-var player2Score; //set equal to current player's score at end of timer
+var player1Score; //set equal to current player's score at end of timer; we only need to keep track of player one, since we only have two players and player two's score will be the same as the score variable.
+var numberOfTimesPlayed = 0; //keeps track of how many times the game has been played; when 2, the game ends and scores are checked against each other. 
 
 
 
 //DOM stuff that needs to be accessible to multiple functions
+var gameInterface = document.querySelector('.game_interface');
 var qualityButtons = document.querySelectorAll('.quality');
 var numberButtons = document.querySelectorAll('.interval');
+var topSection = document.querySelector('.top');
+var bottomSection = document.querySelector('.bottom');
 var player1DoneModal = document.querySelectorAll('.blur')[1];
 var player2Modal = document.querySelectorAll('.blur')[4];
 
 //Show a game instructions dialog, trigger beginning of game when button is clicked.
-function startRound() {
+function startGame() {
   var instructionsModal = document.querySelector('.blur');
   instructionsModal.style.display = 'block';
   var instrModalButton = document.querySelector('.instructions button');
   instrModalButton.addEventListener('click', function() {
+    bottomSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 1...</h1>';
     instructionsModal.style.display = 'none';
     startTimer();
-    playRound();
+    playGame();
     instrModalButton.removeEventListener('click', arguments.callee);
   });
   player2Modal.addEventListener('click', function() {
+    topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>';
     player2Modal.style.display = 'none';
-    startTimer();
-    playRound();
-    player2Modal.removeEventListener('click', arguments.callee);
+      startTimer();
+      playGame();
+      player2Modal.removeEventListener('click', arguments.callee);
   });
 }
 
-function playRound() {
+function playGame() {
+  numberOfTimesPlayed++;
   questionPrompt();
 }
 
@@ -304,6 +310,9 @@ function checkTimer() {
     questionPrompt();
   } else {
     player1DoneModal.style.display = 'block';
+    if (numberOfTimesPlayed <= 1) { //don't update this value when player 2 is playing
+      player1Score = score.innerText;
+    }
     loadPlayerTwoUI();
     return;
   }
@@ -312,7 +321,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 60;
+  timerElement.textContent = 0;
   var countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
@@ -323,37 +332,56 @@ function startTimer() {
 }
 
 function loadPlayerTwoUI() {
-  var gameInterface = document.querySelector('.game_interface');
   var timesUpButton = document.querySelector('.times_up button');
-  var topSection = document.querySelector('.top');
-  var bottomSection = document.querySelector('.bottom');
   var replayButton = document.getElementById('replay');
-
+  var playerStatus = document.querySelector('.inactive_player_status'); 
   setTimeout(function() {
     player1DoneModal.style.display = 'none';
-    gameInterface.classList.toggle('fade-out');
-    replayButton.classList.add('replay_button_animation');
-    setTimeout(function() {
-      gameInterface.style.display = 'none';
-      topSection.style.height = '300px';
-      bottomSection.style.height = '500px';
-      bottomSection.appendChild(gameInterface);
+    if (numberOfTimesPlayed >= 2) {
+      gameInterface.classList.add('fade-out');
+      if (score.innerText > player1Score) { //Player 2 wins...
+        topSection.style.borderBottom = '0px';
+        topSection.style.height = '0px';
+        bottomSection.style.height = '800px';
+        playerStatus.innerText = 'Player 2 wins!';
+      } else if (score.innerText < player1Score) { // Player 1 wins
+        topSection.style.borderBottom = '0px';
+        bottomSection.style.height = '0px';
+        topSection.style.height = '800px';
+        playerStatus.innerText = 'Player 1 wins!';
+      } else { //tie
+        playerStatus.innerText = 'It\'s a tie.';
+        topSection.style.height = '400px';
+        bottomSection.style.height = '400px';
+      }
+      return;
+    } else {
+      gameInterface.classList.toggle('fade-out');
+      playerStatus.classList.add('fade-out');
+      replayButton.classList.add('replay_button_animation');
       setTimeout(function() {
-        gameInterface.style.display = 'block';
+       playerStatus.style.display = 'none';
+        gameInterface.style.display = 'none';
+        topSection.style.height = '300px';
+        bottomSection.style.height = '500px';
+        bottomSection.appendChild(gameInterface);
         setTimeout(function() {
-          gameInterface.classList.toggle('fade-out');
+          gameInterface.style.display = 'block';
           setTimeout(function() {
-            replayButton.classList.remove('replay_button_animation');
+            gameInterface.classList.toggle('fade-out');
             setTimeout(function() {
-              player2Modal.style.display = 'block';
-            }, 1000);
+              replayButton.classList.remove('replay_button_animation');
+              setTimeout(function() {
+                player2Modal.style.display = 'block';
+              }, 1000);
+            }, 200);
           }, 200);
-        }, 200);
-      }, 201);
-    }, 1001);
+        }, 201);
+      }, 1001);
+    }
   }, 3000);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  startRound();
+  startGame();
 });
