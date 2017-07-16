@@ -76,7 +76,8 @@ function startGame() {
     instrModalButton.removeEventListener('click', arguments.callee);
   });
   player2Modal.addEventListener('click', function() {
-    topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>';
+    topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>' + 
+    '<h1 class="inactive_player_status player_1_score">Score: ' + player1Score + '</h1>';
     player2Modal.style.display = 'none';
       clearInterval(countdown);
       startTimer();
@@ -326,7 +327,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 60;
+  timerElement.textContent = 0;
   countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
@@ -340,25 +341,41 @@ function loadPlayerTwoUI() {
   var timesUpButton = document.querySelector('.times_up button');
   var replayButton = document.getElementById('replay');
   var playerStatus = document.querySelector('.inactive_player_status'); 
+  var scoreLabelP1 = document.querySelector('.player_1_score');
   setTimeout(function() {
     player1DoneModal.style.display = 'none';
     if (numberOfTimesPlayed >= 2) {
       gameInterface.classList.add('fade-out');
-      if (score.innerText > player1Score) { //Player 2 wins...
-        topSection.style.borderBottom = '0px';
-        topSection.style.height = '0px';
-        bottomSection.style.height = '800px';
-        playerStatus.innerText = 'Player 2 wins!';
-      } else if (score.innerText < player1Score) { // Player 1 wins
-        topSection.style.borderBottom = '0px';
-        bottomSection.style.height = '0px';
-        topSection.style.height = '800px';
-        playerStatus.innerText = 'Player 1 wins!';
-      } else { //tie
-        playerStatus.innerText = 'It\'s a tie.';
-        topSection.style.height = '400px';
-        bottomSection.style.height = '400px';
-      }
+      playerStatus.classList.add('fade-out');
+      scoreLabelP1.classList.add('fade-out');
+      setTimeout(function() {
+        if (score.innerText > player1Score) { //Player 2 wins...
+          topSection.style.borderBottom = '0px';
+          bottomSection.style.height = '800px';
+          topSection.style.height = '0px';
+          setTimeout(function() {
+            playerStatus.style.display = 'none';
+            topSection.innerHTML = '';
+            bottomSection.innerHTML = '<h1 class="inactive_player_status fade-in" style="margin-top: 150px;">Player 2 wins!</h1>' + 
+            '<h1 class="inactive_player_status fade-in" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' + 
+            '<h1 class="inactive_player_status fade-in" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
+          }, 1001);
+        } else if (score.innerText < player1Score) { // Player 1 wins
+          topSection.style.borderBottom = '0px';
+          bottomSection.style.height = '0px';
+          topSection.style.height = '800px';
+          topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">Player 1 wins!</h1>' + 
+          '<h1 class="inactive_player_status" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' + 
+          '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
+        } else { //tie
+          topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' + 
+            '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 1 Score: ' + player1Score + '</h1>';
+          topSection.style.height = '400px';
+          bottomSection.style.height = '400px';
+          bottomSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' + 
+            '<h1 class="inactive_player_status" style="margin-top: 0px">Player 2 Score: ' + score.innerText + '</h1>';
+        }
+      }, 1001);
       return;
     } else {
       score.innerText = 0;
