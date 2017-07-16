@@ -75,6 +75,26 @@ Getting started with functionality! This is starting to get really fun! Mapping 
 
 * Audio files need to be reloaded in Chrome in order to play the same audio file twice in a row! BUT! They must NOT be reloaded in Firefox! This was frustrating, but solved with a simple if(window.chrome) statement.
 
+### Friday 
+
+Sweet baby Jesus, for the love of God, Jeff, removeEventListeners whenever you don't need them anymore. Spent 12 hours, plus, trying to figure out why my console.logs were printing stubs from function calls exponentially.
+
+#### Concepts I learned today: 
+
+* removeMuthaFuckinEventListeners()
+
+* The debugger is particularly nice to step through your code, especially that "step into function" button to go through every single line when functions are called and to check current values of variables.
+
+### Saturday
+
+Once I got the game working once-through, it was pretty easy to detect whether the user was playing through a second time. Using some DOM manipulation to grab the game UI and inject it into the second player's screen partition was all that had to be done to make it feel like it was player 2's turn, when in fact, the code wasn't really keeping track of that.
+
+####Concepts I learned today: 
+
+* Not really anything new. Just wrapped everything up. Worked out my animation muscles a little bit. 
+
+
+
 
 
 
