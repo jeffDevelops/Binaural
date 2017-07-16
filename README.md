@@ -93,7 +93,7 @@ Once I got the game working once-through, it was pretty easy to detect whether t
 
 * Not really anything new. Just wrapped everything up. Worked out my animation muscles a little bit. 
 
-### Saturday
+### Sunday
 
 You ever have that feeling where you know you've done something horrible, but you're kind of smug about it? I added inline styles to something today. Injected with JavaScript. With innerHTML(). But, the styles were conditional, so I kinda have no shame about it. From a maintainability standpoint, it's gonna suck to be me if I have to change the styles of those elements later on, because I'm not going to know where to find it, because MVC/seperation of concerns is being grossly violated. But, meh. Sucks to suck, future Jeff.
 
