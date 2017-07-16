@@ -44,6 +44,7 @@ var answerForNumber;
 
 //Game Variables
 var timerElement;
+var countdown; //setInterval ID
 
 var score = document.getElementById('score'); //a variable that represents the current player score
 score.innerText = 0;
@@ -77,6 +78,7 @@ function startGame() {
   player2Modal.addEventListener('click', function() {
     topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>';
     player2Modal.style.display = 'none';
+      clearInterval(countdown);
       startTimer();
       playGame();
       player2Modal.removeEventListener('click', arguments.callee);
@@ -322,7 +324,7 @@ function checkTimer() {
 function startTimer() {
   timerElement = document.getElementById('timer');
   timerElement.textContent = 60;
-  var countdown = setInterval(function() {
+  countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
     } else {
