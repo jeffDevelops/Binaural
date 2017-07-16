@@ -77,7 +77,7 @@ function startGame() {
   });
   player2Modal.addEventListener('click', function() {
     topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>' + 
-    '<h1 class="inactive_player_status player_1_score">Score: ' + player1Score + '</h1>';
+    '<h1 class="inactive_player_status player_1_score" style="margin-top: 0px">Score: ' + player1Score + '</h1>';
     player2Modal.style.display = 'none';
       clearInterval(countdown);
       startTimer();
@@ -327,7 +327,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 0;
+  timerElement.textContent = 60;
   countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
