@@ -89,7 +89,7 @@ Sweet baby Jesus, for the love of God, Jeff, removeEventListeners whenever you d
 
 Once I got the game working once-through, it was pretty easy to detect whether the user was playing through a second time. Using some DOM manipulation to grab the game UI and inject it into the second player's screen partition was all that had to be done to make it feel like it was player 2's turn, when in fact, the code wasn't really keeping track of that.
 
-####Concepts I learned today: 
+#### Concepts I learned today: 
 
 * Not really anything new. Just wrapped everything up. Worked out my animation muscles a little bit. 
 
