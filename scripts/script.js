@@ -62,11 +62,13 @@ var topSection = document.querySelector('.top');
 var bottomSection = document.querySelector('.bottom');
 var player1DoneModal = document.querySelectorAll('.blur')[1];
 var player2Modal = document.querySelectorAll('.blur')[4];
+var body = document.querySelector('.blurred_content'); //for blur effect
 
 //Show a game instructions dialog, trigger beginning of game when button is clicked.
 function startGame() {
   var instructionsModal = document.querySelector('.blur');
   instructionsModal.style.display = 'block';
+  body.classList.add('blurred_content');
   var instrModalButton = document.querySelector('.instructions button');
   instrModalButton.addEventListener('click', function() {
     bottomSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 1...</h1>';
@@ -402,9 +404,14 @@ function loadPlayerTwoUI() {
         }, 201);
       }, 1001);
     }
-  }, 3000);
+  }, 2000);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
   startGame();
+
+
+
+
+
 });
