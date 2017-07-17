@@ -52,8 +52,6 @@ score.innerText = 0;
 var player1Score; //set equal to current player's score at end of timer; we only need to keep track of player one, since we only have two players and player two's score will be the same as the score variable.
 var numberOfTimesPlayed = 0; //keeps track of how many times the game has been played; when 2, the game ends and scores are checked against each other. 
 
-
-
 //DOM stuff that needs to be accessible to multiple functions
 var gameInterface = document.querySelector('.game_interface');
 var qualityButtons = document.querySelectorAll('.quality');
@@ -385,7 +383,7 @@ function loadPlayerTwoUI() {
       playerStatus.classList.add('fade-out');
       replayButton.classList.add('replay_button_animation');
       setTimeout(function() {
-       playerStatus.style.display = 'none';
+        playerStatus.style.display = 'none';
         gameInterface.style.display = 'none';
         topSection.style.height = '300px';
         bottomSection.style.height = '500px';
