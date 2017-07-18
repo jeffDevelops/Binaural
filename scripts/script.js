@@ -327,7 +327,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 60;
+  timerElement.textContent = 0;
   countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
@@ -358,7 +358,8 @@ function loadPlayerTwoUI() {
             topSection.innerHTML = '';
             bottomSection.innerHTML = '<h1 class="inactive_player_status fade-in" style="margin-top: 150px;">Player 2 wins!</h1>' + 
             '<h1 class="inactive_player_status fade-in" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' + 
-            '<h1 class="inactive_player_status fade-in" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
+            '<h1 class="inactive_player_status fade-in" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>' + 
+            '<button id="play_again" class="guess"  style="margin: 0 auto; width:50%;">Play Again</button>';
           }, 1001);
         } else if (score.innerText < player1Score) { // Player 1 wins
           topSection.style.borderBottom = '0px';
@@ -366,16 +367,24 @@ function loadPlayerTwoUI() {
           topSection.style.height = '800px';
           topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">Player 1 wins!</h1>' + 
           '<h1 class="inactive_player_status" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' + 
-          '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
+          '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>' + 
+            '<button id="play_again" class="guess" style="display: block; margin: 20px auto; width:50%;">Play Again</button>';
         } else { //tie
           topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' + 
-            '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 1 Score: ' + player1Score + '</h1>';
+            '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 1 Score: ' + player1Score + '</h1>' + 
+            '<button id="play_again" class="guess" style="display: block; margin: 20px auto; width:50%;">Play Again</button>';
           topSection.style.height = '400px';
           bottomSection.style.height = '400px';
           bottomSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' + 
-            '<h1 class="inactive_player_status" style="margin-top: 0px">Player 2 Score: ' + score.innerText + '</h1>';
+            '<h1 class="inactive_player_status" style="display: block; margin-top: 20px">Player 2 Score: ' + score.innerText + '</h1>';
         }
       }, 1001);
+      var playAgainButton = document.getElementById('play_again');
+      playAgainButton.addEventListener('click', function() {
+        reset();
+        startGame();
+        playAgainButton.removeEventListener('click', arguments.callee);
+      });
       return;
     } else {
       score.innerText = 0;

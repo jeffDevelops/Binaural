@@ -81,6 +81,7 @@
 		text-align: center;
 		font-size: 3em;
 		font-weight: 300;
+		color: rgb(254, 0, 66);
 		background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
 		background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
 		background-image: -ms-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
@@ -107,6 +108,7 @@
 
 	#about .logo_large {
 		position: static;
+
 	}
 
 	.content_block {
@@ -141,8 +143,8 @@
 	.nav_logo {
 		display: block;
 		text-align: center;
-		margin: 15px 0 0 0;
-		font-size: 2.2em;
+		margin: 5px 0 0 0;
+		font-size: 1.4em;
 		background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
 		background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
 		background-image: -ms-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
@@ -165,8 +167,7 @@
 	}
 
 	.game_nav {
-		width: 100%;
-		height: 40px;
+		display: none;
 	}
 
 	.game_nav ul {
@@ -324,7 +325,7 @@
 	}
 
 	.game_interface {
-		padding: 0 2vw;
+		padding: 0 0 0 2vw;
 		opacity: 1;
 		-webkit-transition: opacity 1s;
 		-moz-transition: opacity 1s;
@@ -353,21 +354,51 @@
 
 	.game_title {
 		margin: 5px 0;
-		text-align: center;
-		font-size: 1.8em;
+		text-align: left;
+		font-size: 1.5em;
 		font-weight: 300;
 		color: #fff;
 	}
 
 	.interface_column {
 		display: inline-block;
-		width: 49%;
-		margin: 0 auto;
+		width: 48.5%;
+		margin: 0 0 0 .5%;
 	}
 
 	div.col-md-6.col-lg-6.interface_column {
 		height: 350px;
 		margin: 0;
+		padding: 0;
+	}
+
+	div.col-md-6.col-lg-6.interface_column.third {
+		width: 100%;
+	}
+
+	div.col-md-6.col-lg-6.interface_column.third #submit {
+		display: block;
+		margin: 5px 0 0 2px;
+		width: 96%;
+		height: 40px;
+		font-size: 1em;
+	}
+
+	div.col-md-6.col-lg-6.interface_column.third .gameplay_label {
+		display: inline-block;
+		width: 40%;
+		margin: 65px 0 0 0;
+	}
+
+	div.col-md-6.col-lg-6.interface_column.third .gameplay_data {
+		display: inline-block;
+		width: 5%;
+	}
+
+	.mobile .interface_column {
+		display: block;
+		height: 200px;
+		margin: 0 auto;
 		padding: 0;
 	}
 
@@ -463,11 +494,10 @@
 		margin-top: 1px;
 	}
 
-	.interval {
-	}
 
 	#interface_column.third {
 		position: relative;
+		width: 100%;
 	}
 
 	#submit {
@@ -509,7 +539,7 @@
 		text-align: right;
 		font-family: 'Muli', sans-serif;
 		font-weight: 200;
-		font-size: 1.5em;
+		font-size: 1em;
 		color: #fff;
 	}
 
@@ -518,7 +548,7 @@
 		text-align: right;
 		font-family: 'Muli', sans-serif;
 		font-weight: 300;
-		font-size: 3em;
+		font-size: 2em;
 		color: #fff;
 	}
 
@@ -605,12 +635,12 @@
 	.inactive_player_status { 
 		display: block;
 		width: 70%;
-		margin: 100px auto 0 auto;
+		margin: 15px auto 0 auto;
 		text-align: right;
 		font-style: italic;
 		color: #fff;
 		font-weight: 200;
-		font-size: 2.5em;
+		font-size: 1.3em;
 	}
 }
 /****************************************************/
@@ -638,12 +668,12 @@
 /****************************************************/
 /****************************************************/
  
-@media only screen and (min-width: 775px) and (max-width: 991px) {
+ @media only screen and (min-width: 775px) and (max-width: 991px) {
 /* TABLET OR LARGER */
 
 	/*WHILE GAME IS UNDER CONSTRUCTION*/
 
-	.coming_soon {
+  .coming_soon {
 		padding: 0 0 0 10px;
 		text-transform: uppercase;
 		font-size: .6em;
@@ -917,6 +947,10 @@
 
 	main {
 		height: 800px;
+	}
+
+	div.row.first_row {
+		height: 200px;
 	}
 
 	.top {
