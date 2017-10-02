@@ -3,7 +3,7 @@ Binaural is an aural skills teaching tool for anyone wishing to hone their music
 
 ## Wireframe
 ![Image of Binaural Wireframe]
-(https://github.com/jeffDevelops/Binaural/blob/master/Screen%20Shot%202017-07-10%20at%209.56.55%20PM.png?raw=true)
+(https://raw.githubusercontent.com/jeffDevelops/Binaural/master/assets/Project-1-Wireframe.png);
 
 ## App Overview
 Gameplay for this project will be simple: two players will compete for sixty seconds to guess as many aural intervallic relationships (played with audio snippets) as possible, and the player that correctly identifies more wins.
@@ -15,8 +15,10 @@ While this project is centered around identifying a winner out of multiple playe
 ## Technologies Proposal
 As a culmination of our unit on client-side rendering at GA, everything will be constructed on the front-end. For now. The componentized design elements that will be passed between the players during gameplay screams React to me, but that'll be for another time. For now, I'll componentize by grouping class names; this way, when it's time to switch players and move the game UI to the other half of the screen we can just grab large chunks of DOM all at once. Call me naive because I don't actually have a clue about the actual performance expenses of loading the entire jQuery library, but I'm going to pretend like performance is critical. Plus, I'd like some more practice with raw JavaScript DOM API in case jQuery is viewed with as much disdain as the trolls of Stack Overflow in future occupational environments. Something I'm floored to take a look at are these partial libraries Zeb was talking about. Maybe I can find a Bootstrap or Foundation just-the-grid library to expedite layout without the other thousands of lines of CSS, and who knows? Maybe that'll save me some time to dive into CSS Grid for the users whose browsers that support that.
 
-## Intervals Cheat Sheet
+## Implementation
+One of the largest challenges with this project was that, within the octave, there are virtually no patterns that I could have passed to a for loop to assign correct answers for any of the semitone ranges. If you look at my JS, there's a really long-winded switch statement with twelve different cases to assign an array of correct answer objects to the interval that was played to the user. Once the project expands to play pitches within multiple octaves, all octaves are organized the same way, so a clearer pattern could be looped through at a more macro level.
 
+## Intervals Cheat Sheet
 For my instructors, who may want some context to be able to play my game if they have no musical background:
 
 Only unisons, fourths, fifths, and octaves can be perfect, because you can't make them major or minor. Lowering these intervals by half-step diminishes them, and the inverse augments them.

@@ -52,8 +52,6 @@ score.innerText = 0;
 var player1Score; //set equal to current player's score at end of timer; we only need to keep track of player one, since we only have two players and player two's score will be the same as the score variable.
 var numberOfTimesPlayed = 0; //keeps track of how many times the game has been played; when 2, the game ends and scores are checked against each other.
 
-
-
 //DOM stuff that needs to be accessible to multiple functions
 var gameInterface = document.querySelector('.game_interface');
 var qualityButtons = document.querySelectorAll('.quality');
@@ -358,6 +356,7 @@ function loadPlayerTwoUI() {
           setTimeout(function() {
             playerStatus.style.display = 'none';
             topSection.innerHTML = '';
+
             bottomSection.innerHTML = '<h1 class="inactive_player_status fade-in" style="margin-top: 150px;">Player 2 wins!</h1>' +
             '<h1 class="inactive_player_status fade-in" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' +
             '<h1 class="inactive_player_status fade-in" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
@@ -378,6 +377,12 @@ function loadPlayerTwoUI() {
             '<h1 class="inactive_player_status" style="margin-top: 0px">Player 2 Score: ' + score.innerText + '</h1>';
         }
       }, 1001);
+      var playAgainButton = document.getElementById('play_again');
+      playAgainButton.addEventListener('click', function() {
+        reset();
+        startGame();
+        playAgainButton.removeEventListener('click', arguments.callee);
+      });
       return;
     } else {
       score.innerText = 0;
@@ -385,7 +390,7 @@ function loadPlayerTwoUI() {
       playerStatus.classList.add('fade-out');
       replayButton.classList.add('replay_button_animation');
       setTimeout(function() {
-       playerStatus.style.display = 'none';
+        playerStatus.style.display = 'none';
         gameInterface.style.display = 'none';
         topSection.style.height = '200px';
         bottomSection.style.height = '400px';
