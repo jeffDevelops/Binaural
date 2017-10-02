@@ -12,7 +12,7 @@
 	<!-- Custom Styles -->
 	<link rel="stylesheet" href="styles/styles.css" />
 	<title>Binaural</title>
-	
+
 </head>
 <body id="two_players" class="blurred_content">
 	<div class="container-fluid">
@@ -32,9 +32,9 @@
 			 	</nav>
 			</div>
 	 	</div>
-	 	<div class="row">
-		 	<div class="col-md-3 col-lg-3 col-sm-0">
-		 		<aside>
+	 	<div class="row page">
+		 	<!-- <div class="col-md-3 col-lg-3">
+		  	<aside>
 			 		<nav>
 			 			<h2 class="aside_title">Challenges</h2>
 			 			<ul>
@@ -52,51 +52,102 @@
 			 			</ul>
 			 		</nav>
 		 		</aside>
-			</div>
-		 	<div class="players_indicator col-sm-1 col-md-1 col-lg-1">
+			</div> -->
+			<div class="hidden-xs hidden-sm col-md-2 col-lg-2"></div>
+		 	<div class="players_indicator xs-hidden sm-hidden col-md-1 col-lg-1">
 		 		<div class="player_caption first"><h1 class="player one">Player</h1><h1 class="player_number one">1</h1></div>
 		 		<div class="player_caption second"><h1 class="player two">Player</h1><h1 class="player_number two">2</h1></div>
 		 	</div>
- 			<main class="col-md-8 col-lg-8">
+
+ 			<main id="binaural" class="col-xs-12 col-md-6 col-lg-6">
 				<div class="active_player top">
 					<div class="container-fluid game_interface">
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12"><h2 class="game_title">Intervals In Series</h2></div>
-						</div>
-						<div class="row">
-							<div class="col-md-3 col-lg-3 interface_column">
+							<div class="hidden-xs col-sm-2 hidden-md-up hide_on_larger"></div>
+							<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 interface_column row">
 								<button id="replay"></button>
-								<button id="augmented" class="guess quality">Augmented</button>
-								<button id="major" class="guess quality">Major</button>
-								<button id="perfect" class="guess quality">Perfect</button>
-								<button id="minor" class="guess quality">minor</button>
-								<button id="diminished" class="guess quality">diminished</button>
+								<div class="col-xs-2"></div>
+								<div class="col-xs-4 first_column_buttons">
+									<button id="augmented" class="guess quality">
+										<span class="button_text">+</span>
+									</button>
+									<button id="perfect" class="guess quality">
+										<span class="button_text">P</span>
+									</button>
+									<button id="diminished" class="guess quality">
+										<span class="button_text">&deg;</span>
+									</button>
+								</div>
+								<div class="col-xs-4 staggered">
+									<button id="major" class="guess quality">
+										<span class="button_text">Maj</span>
+									</button>
+									<button id="minor" class="guess quality">
+										<span class="button_text">min</span>
+									</button>
+								</div>
+								<div class="col-xs-2"></div>
 							</div>
-							<div class="col-md-3 col-lg-3 interface_column">
-								<button id="octave" class="guess interval first">Octave</button>
-								<button id="seventh" class="guess interval">Seventh</button>
-								<button id="sixth" class="guess interval">Sixth</button>
-								<button id="fifth" class="guess interval">Fifth</button>
-								<button id="fourth" class="guess interval">Fourth</button>
-								<button id="third" class="guess interval">Third</button>
-								<button id="second" class="guess interval">Second</button>
-								<button id="unison" class="guess interval">Unison</button>
+
+							<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 interface_column row number_buttons">
+								<div class="col-xs-2"></div>
+								<div class="col-xs-4 first_column_buttons">
+									<button id="octave" class="guess interval first">
+										<span class="button_text">Oct</span>
+									</button>
+									<button id="sixth" class="guess interval">
+										<span class="button_text">6th</span>
+									</button>
+									<button id="fourth" class="guess interval">
+										<span class="button_text">4th</span>
+									</button>
+									<button id="second" class="guess interval">
+										<span class="button_text">2nd</span>
+									</button>
+								</div>
+								<div class="col-xs-4 staggered">
+									<button id="seventh" class="guess interval">
+										<span class="button_text">7th</span>
+									</button>
+									<button id="fifth" class="guess interval">
+										<span class="button_text">5th</span>
+									</button>
+									<button id="third" class="guess interval">
+										<span class="button_text">3rd</span>
+									</button>
+									<button id="unison" class="guess interval">
+										<span class="button_text">Unis</span>
+									</button>
+								</div>
+								<div class="col-xs-2"></div>
 							</div>
-							<div class="col-md-6 col-lg-6 interface_column third">
-								<h1 class="gameplay_label">TIME REMAINING</h1>
-								<h1 id="timer" class="gameplay_data">60</h1>
-								<h1 class="gameplay_label">SCORE</h1>
-								<h1 id="score" class="gameplay_data">0</h1>
+							<div class="hidden-xs col-sm-2 hidden-md-up hide_on_larger"></div>
+
+							<div class="col-xs-12 col-sm-12 col-md-4 col-lg-6 interface_column third">
+								<h2 class="game_title hide_on_mobile">Intervals In Series</h2>
+								<div class="timer_div">
+									<h1 class="gameplay_label">TIME <span class="hide_on_mobile">REMAINING</span></h1>
+									<h1 id="timer" class="gameplay_data">60</h1>
+								</div>
+								<div class="score_div">
+									<h1 class="gameplay_label">SCORE</h1>
+									<h1 id="score" class="gameplay_data">0</h1>
+								</div>
 								<button id="submit">Next Interval</button>
 							</div>
 						</div>
+
+
 					</div>
 				</div>
 				<div class="inactive_player bottom">
 				</div>
 			</main>
+			<div class="xs-hidden sm-hidden col-md-3 col-lg-3 right_margin"></div>
 		</div>
-		<div class="row">
+
+
+		<!-- <div class="row">
 			<footer class="col-md-12 col-lg-12">
 				<div class="col-md-4 col-lg-4">
 				</div>
@@ -106,16 +157,16 @@
 				<div class="col-md-4 col-lg-4">
 				</div>
 			</footer>
-		</div>
+		</div> -->
 
 		<!-- MODALS (display: none'd until triggered) -->
 		<div class="blur">
 			<div class="instructions">
 				<div class="parent">
 					<h1 class="game_title">Intervals In Series</h1>
-					<p>Welcome to Level 1! For this game, each player has 60 seconds to guess as many intervals as possible. You'll hear two notes in succession. Guess the quality and the number of the interval you're hearing and hit "Next Interval" to check your answer and move on to the next one. The player with the most correct guesses wins!</p>
+					<p>Welcome to Binaural! Each player has 60 seconds to guess as many intervals as possible. You'll hear two notes. Guess the quality and the number of the interval you're hearing and hit "Next Interval" to move on to the next one. The player with the most correct guesses wins!</p>
 					<p>Player 1! Ready? Set...</p>
-					<button class="guess">Go!</button>
+					<button class="guess modal_button">Go!</button>
 				</div>
 			</div>
 		</div>

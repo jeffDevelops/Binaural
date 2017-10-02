@@ -50,7 +50,7 @@ var score = document.getElementById('score'); //a variable that represents the c
 score.innerText = 0;
 
 var player1Score; //set equal to current player's score at end of timer; we only need to keep track of player one, since we only have two players and player two's score will be the same as the score variable.
-var numberOfTimesPlayed = 0; //keeps track of how many times the game has been played; when 2, the game ends and scores are checked against each other. 
+var numberOfTimesPlayed = 0; //keeps track of how many times the game has been played; when 2, the game ends and scores are checked against each other.
 
 //DOM stuff that needs to be accessible to multiple functions
 var gameInterface = document.querySelector('.game_interface');
@@ -76,7 +76,7 @@ function startGame() {
     instrModalButton.removeEventListener('click', arguments.callee);
   });
   player2Modal.addEventListener('click', function() {
-    topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>' + 
+    topSection.innerHTML = '<h1 class="inactive_player_status">Awaiting results from Player 2...</h1>' +
     '<h1 class="inactive_player_status player_1_score" style="margin-top: 0px">Score: ' + player1Score + '</h1>';
     player2Modal.style.display = 'none';
       clearInterval(countdown);
@@ -195,7 +195,7 @@ function getCorrectAnswer(pitch1, pitch2) {
         {quality: "diminished", number: "seventh"},
       ];
       break;
-    case 10: 
+    case 10:
       acceptableAnswers = [
         {quality: "minor", number: "seventh"},
         {quality: "augmented", number: "sixth"},
@@ -225,7 +225,7 @@ function getCorrectAnswer(pitch1, pitch2) {
 
 function getUserAnswer() {
   var replayButton = document.getElementById('replay');
-  replayButton.addEventListener('click', playPitches); 
+  replayButton.addEventListener('click', playPitches);
   answerForQuality = '';
   answerForNumber = '';
   //Get user's answer for interval QUALITY
@@ -294,7 +294,7 @@ function checkUserAnswer() {
     incorrectModal.style.display = 'block';
     setTimeout(function() {
       incorrectModal.style.display = 'none';
-    }, 700); 
+    }, 700);
   }
   isCorrect = false;
   reset();
@@ -340,7 +340,7 @@ function startTimer() {
 function loadPlayerTwoUI() {
   var timesUpButton = document.querySelector('.times_up button');
   var replayButton = document.getElementById('replay');
-  var playerStatus = document.querySelector('.inactive_player_status'); 
+  var playerStatus = document.querySelector('.inactive_player_status');
   var scoreLabelP1 = document.querySelector('.player_1_score');
   setTimeout(function() {
     player1DoneModal.style.display = 'none';
@@ -351,32 +351,30 @@ function loadPlayerTwoUI() {
       setTimeout(function() {
         if (score.innerText > player1Score) { //Player 2 wins...
           topSection.style.borderBottom = '0px';
-          bottomSection.style.height = '800px';
+          bottomSection.style.height = '600px';
           topSection.style.height = '0px';
           setTimeout(function() {
             playerStatus.style.display = 'none';
             topSection.innerHTML = '';
-            bottomSection.innerHTML = '<h1 class="inactive_player_status fade-in" style="margin-top: 150px;">Player 2 wins!</h1>' + 
-            '<h1 class="inactive_player_status fade-in" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' + 
-            '<h1 class="inactive_player_status fade-in" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>' + 
-            '<button id="play_again" class="guess"  style="margin: 0 auto; width:50%;">Play Again</button>';
+
+            bottomSection.innerHTML = '<h1 class="inactive_player_status fade-in" style="margin-top: 150px;">Player 2 wins!</h1>' +
+            '<h1 class="inactive_player_status fade-in" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' +
+            '<h1 class="inactive_player_status fade-in" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
           }, 1001);
         } else if (score.innerText < player1Score) { // Player 1 wins
           topSection.style.borderBottom = '0px';
           bottomSection.style.height = '0px';
-          topSection.style.height = '800px';
-          topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">Player 1 wins!</h1>' + 
-          '<h1 class="inactive_player_status" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' + 
-          '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>' + 
-            '<button id="play_again" class="guess" style="display: block; margin: 20px auto; width:50%;">Play Again</button>';
+          topSection.style.height = '600px';
+          topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">Player 1 wins!</h1>' +
+          '<h1 class="inactive_player_status" style="margin-top: 50px;">Player 1 Score: ' + player1Score + '</h1>' +
+          '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 2 Score: ' + score.innerText + '</h1>';
         } else { //tie
-          topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' + 
-            '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 1 Score: ' + player1Score + '</h1>' + 
-            '<button id="play_again" class="guess" style="display: block; margin: 20px auto; width:50%;">Play Again</button>';
-          topSection.style.height = '400px';
-          bottomSection.style.height = '400px';
-          bottomSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' + 
-            '<h1 class="inactive_player_status" style="display: block; margin-top: 20px">Player 2 Score: ' + score.innerText + '</h1>';
+          topSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' +
+            '<h1 class="inactive_player_status" style="margin-top: 0px;">Player 1 Score: ' + player1Score + '</h1>';
+          topSection.style.height = '300px';
+          bottomSection.style.height = '300px';
+          bottomSection.innerHTML = '<h1 class="inactive_player_status" style="margin-top: 150px;">It\'s a tie.</h1>' +
+            '<h1 class="inactive_player_status" style="margin-top: 0px">Player 2 Score: ' + score.innerText + '</h1>';
         }
       }, 1001);
       var playAgainButton = document.getElementById('play_again');
@@ -394,8 +392,8 @@ function loadPlayerTwoUI() {
       setTimeout(function() {
         playerStatus.style.display = 'none';
         gameInterface.style.display = 'none';
-        topSection.style.height = '300px';
-        bottomSection.style.height = '500px';
+        topSection.style.height = '200px';
+        bottomSection.style.height = '400px';
         bottomSection.appendChild(gameInterface);
         setTimeout(function() {
           gameInterface.style.display = 'block';
