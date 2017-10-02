@@ -12,12 +12,13 @@
 html {
 	width: 100%;
 	height: 100%;
+	overflow: auto;
+	box-sizing: border-box;
 }
 
 body {
-	width: 100vw;
-	height: 100%
-	border: 1px solid transparent;
+	width: 100%;
+	height: 100%;
 	font-family: 'Muli';
 }
 
@@ -29,7 +30,7 @@ body {
 	border: 1px solid transparent;
 }
 
-.col-md-12, .col-lg-12, .col-md-8, .col-lg-8, .col-md-4, .col-lg-4, .col-md-3, .col-lg-3, .col-md-1, .col-lg-1 {
+.col-md-12, .col-lg-12, .col-md-11, .col-lg-11 .col-md-8, .col-lg-8, .col-md-4, .col-lg-4, .col-md-3, .col-lg-3, .col-md-1, .col-lg-1, .col-xs-6, .col-xs-4, .col-xs-3, .col-xs-2 {
 	padding: 0;
 	margin: 0; /* Removes Bootstrap padding and margin*/
 }
@@ -172,17 +173,21 @@ nav ul li a:hover {
 	padding: 38px 7vw 0 0;
 }
 
+.page {
+	margin-top: 100px;
+	height: 600px;
+}
+
 aside {
 	margin: 0;
 	padding: 0;
-	
 	width: 100%;
 	height: 800px;
 	background-image: -webkit-linear-gradient(top, rgb(164, 0, 255), rgb(254, 0, 66));
 	background-image: -o-linear-gradient(top, rgb(164, 0, 255), rgb(254, 0, 66));
 	background-image: linear-gradient(top, rgb(164, 0, 255), rgb(254, 0, 66));
 	color: #fff;
-}		
+}
 
 aside h2 {
 	padding: 30px 0 0 0;
@@ -227,7 +232,7 @@ aside ul li a:hover {
 	color: #fff;
 }
 
-aside ul li a:active, 
+aside ul li a:active,
 aside ul li a:visited,
 aside ul li a:focus {
 	text-decoration: none;
@@ -235,15 +240,16 @@ aside ul li a:focus {
 }
 
 .players_indicator {
-	height: 800px;
+	height: 600px;
+	background: #fff;
 }
 
 .first  {
-	margin: 100px 0;
+	margin: 50px 0;
 }
 
 .second {
-	margin: 400px 0 0 0;
+	margin: 300px 0 0 0;
 }
 
 .players_indicator .player, .players_indicator .player_number {
@@ -272,15 +278,16 @@ aside ul li a:focus {
 	font-weight: 200;
 }
 
-main {
-	height: 800px;
+main.col-lg-6.col-md-6 {
+	height: 600px;
+	padding: 0;
 }
 
 .top {
-	height: 500px;
+	height: 400px;
 	width: 100%;
-	border: 1px solid transparent;
-	border-bottom: 5px solid #fff;
+	border-left: 2px solid #fff;
+	border-right: 2px solid #fff;
 	background: rgb(164, 0, 255);
 	background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
 	background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(190, 0, 255));
@@ -296,13 +303,15 @@ main {
 
 .bottom {
 	width: 100%;
-	height: 300px;
+	height: 200px;
 	background-image: -webkit-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: -moz-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: -ms-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: -o-linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
 	background-image: linear-gradient(right,rgb(200, 0, 150), rgb(254, 0, 66));
-	border: 1px solid transparent;
+	border-left: 2px solid #fff;
+	border-top: 2px solid #fff;
+	border-right: 2px solid #fff;
 	-webkit-transition: height 1s;
 	-moz-transition: height 1s;
 	-ms-transition: height 1s;
@@ -315,6 +324,7 @@ main {
 }
 
 .game_interface {
+	height: 100%;
 	padding: 0 2vw;
 	opacity: 1;
 	-webkit-transition: opacity 1s;
@@ -343,29 +353,30 @@ main {
 }
 
 .game_title {
-	margin: 25px 0 0 0;
+	margin: 10px 0 0 0;
+	line-height: 1em;
 	text-align: right;
-	font-size: 3em;
+	font-size: 2.5em;
 	font-weight: 300;
 	color: #fff;
 }
 
 .interface_column {
-	height: 350px;
-	margin: 0;
+	height: 300px;
+	margin: 25px auto 0 auto;
 }
 
 div.col-md-6.col-lg-6.interface_column {
-	height: 350px;
+	height: 365px;
 	margin: 0;
 	padding: 0;
 }
 
 #replay {
 	display: block;
-	width: 125px;
-	height: 125px;
-	margin: 0 auto 3% auto;
+	width: 90px;
+	height: 90px;
+	margin: 25px auto;
 	border-radius: 50%;
 	border: 2px solid #fff;
 	background-color: rgba(0, 0, 0, 0);
@@ -393,7 +404,7 @@ div.col-md-6.col-lg-6.interface_column {
 	transform: rotateZ(-360deg);
 }
 
-#replay:focus, 
+#replay:focus,
 #replay:active {
 	outline: none;
 }
@@ -411,10 +422,26 @@ div.col-md-6.col-lg-6.interface_column {
 	transform: rotateZ(-360deg);
 }
 
+.first_column_buttons {
+	margin-top: -25px;
+}
+
+.first_column_buttons .button {
+	float: right;
+}
+
+.number_buttons {
+	margin-top: 90px;
+}
+
 .guess {
-	width: 95%;
-	padding: 0 0;
-	margin: 2% auto 0 auto;
+	display: block;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	padding-bottom: 50px;
+	margin: 5% auto 0 auto;
 	height: 11%;
 	border: 2px solid #fff;
 	background-color: rgba(255, 255, 255, 0);
@@ -425,7 +452,6 @@ div.col-md-6.col-lg-6.interface_column {
 }
 
 .guess:hover {
-	width: 95%;
 	background: rgba(255, 255, 255, 1);
 	-webkit-transition: all .3s;
 	-moz-transition: all .3s;
@@ -435,13 +461,22 @@ div.col-md-6.col-lg-6.interface_column {
 	color: rgb(164, 0, 255);
 }
 
+.button_text {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 14px;
+	font-size: .75em;
+}
+
 .guess.active {
 	color: rgb(164, 0, 255);
 	background: #fff;
 	outline: none;
 }
 
-.bottom .guess:hover { 
+.bottom .guess:hover {
 	color: rgb(254, 0, 66);
 }
 
@@ -455,7 +490,6 @@ div.col-md-6.col-lg-6.interface_column {
 
 .interval {
 	height: 11%;
-	margin: 1.33% auto;
 }
 
 #interface_column.third {
@@ -463,16 +497,18 @@ div.col-md-6.col-lg-6.interface_column {
 }
 
 #submit {
-	height: 50%;
-	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 30px;
+	height: 240px;
+	width: 240px;
 	border: 2px solid #fff;
+	border-radius: 50%;
 	background: rgba(0, 0, 0, 0);
 	color: #fff;
 	font-family: 'Muli', sans-serif;
 	font-weight: 200;
-	font-size: 1.5em;
-	position: absolute;
-	bottom: -5px;
+	font-size: 1.2em;
 }
 
 #submit:hover {
@@ -529,13 +565,21 @@ div.col-md-6.col-lg-6.interface_column {
 	position: absolute;
 	z-index: 2;
 	display: block;
-	top: 25vh;
-	left: 32vw;
-	width: 40%;
-	height: 450px;
+	top: 10vh;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 60%;
+	max-width: 774px;
+	min-width: 774px;
+	height: 60%;
+	max-height: 774px;
+	min-height: 774px;
 	background-image: -webkit-linear-gradient(bottom, rgba(164, 0, 255, 1), rgba(254, 0, 66, 1));
 	background-image: -o-linear-gradient(bottom, rgba(164, 0, 255, 1), rgba(254, 0, 66, 1));
 	background-image: linear-gradient(bottom, rgba(164, 0, 255, 1), rgba(254, 0, 66, 1));
+	border-radius: 50%;
+	padding-bottom: 60%;
 }
 
 .blur {
@@ -555,24 +599,34 @@ body:not(.blur) .blurred_content {
 }
 
 .instructions .parent {
-	width: 90%;
-	margin:  0 auto;
+	width: 60%;
+	min-width: 350px;
+	max-width: 400px;
+	margin: 160px auto 0 auto;
+}
+
+.instructions .game_title {
+	text-align: center;
 }
 
 .instructions p {
 	font-size: 1.5em;
-	text-align: justify;
+	letter-spacing: .05em;
+	text-align: left;
 	color: #fff;
 }
 
 .instructions button {
-	height: 40px;
 	margin: 0 auto;
-	width: 100%;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+
+	padding: 10px 0 10px 0;
 }
 
 .instructions button:hover {
-	width: 100%;
+	width: 110px;
 }
 
 .instructions.times_up {
@@ -594,22 +648,179 @@ body:not(.blur) .blurred_content {
 }
 
 /*Injected with JS innerHTML*/
-.inactive_player_status { 
+
+.inactive_player {
+	padding-top: 25px;
+}
+
+.inactive_player_status {
 	display: block;
 	width: 70%;
-	margin: 100px auto 0 auto;
+	margin: 0 auto 0 auto;
 	text-align: right;
 	font-style: italic;
+	line-height: 1em;
 	color: #fff;
 	font-weight: 200;
 	font-size: 2.5em;
 }
 
+#binaural {
+	padding: 0;
+	perspective:1px;
+	border-radius: 50px;
+}
 
+@media(max-width: 991px) {
+	.page {
+		margin-top: 0;
+	}
+	.nav_logo {
+		margin-top: 10px;
+		height: 35px;
+	}
+	nav {
+		height: 5vh;
+	}
+	nav ul {
+		text-align: center;
+		height: 25px;
+	}
+	.game_nav ul li {
+		padding: 0;
+		margin: 5px 7px 0 7px;
+	}
+	.players_indicator, .right_margin {
+		display: none;
+	}
+	.top, .bottom {
+		border-left: none;
+		border-right: none;
+	}
+	.hide_on_mobile {
+		display: none;
+	}
+	#replay {
+		width: 90px;
+		height: 90px;
+	}
+	.interface_column {
+		margin-top: 15px;
+	}
+	.number_buttons {
+		margin-top: 65px;
+	}
+	.staggered .guess {
+		margin-left: 7px;
+	}
 
+	.third {
+		position: static;
+	}
+	/*Change the relative context for the submit button */
+	.game_interface {
+		position: relative;
+	}
 
+	.timer_div, .score_div {
+		position: absolute;
+		top: 10px;
+		width: 9%;
+		height: 100px;
+		display: block;
+	}
+	.timer_div .gameplay_label {
+		text-align: left;
+	}
+	.score_div {
+		right: 20px;
+	}
+	.gameplay_label {
+		margin-bottom: 5px;
+		font-size: .8em;
+	}
+	.gameplay_data {
+		font-size: 1.5em;
+	}
+	#timer {
+		text-align: left;
+	}
+	.third {
+		margin: 0;
+		height: 0;
+	}
+	#submit {
+		bottom: 15px;
+		left: 0;
+		right: 0;
+		margin: auto;
+		height: 90px;
+		width: 90px;
+	}
+	/*Modal*/
+	.instructions {
+		overflow: hidden;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 0;
+		padding: 0;
+		max-height: 100%;
+		max-width: 100%;
+		min-height: 100%;
+		min-width: 100%;
+	}
 
+}
 
+@media(min-width: 450px) and (max-width: 992px) {
+	.guess {
+		width: 60px;
+		height: 60px;
+	}
+	.first_column_buttons .guess {
+		margin-right: 0;
+	}
+	.staggered .guess {
+		margin-left: 0;
+	}
+	#submit {
+		border-radius: 50%;
+		height: 110px;
+		width: 110px;
+	}
+}
 
+@media(min-width: 992px) {
+	.hide_on_larger {
+		display: none;
+	}
+	.third {
+		position: static;
+	}
+	/*Change the relative context for the submit button */
+	.game_interface {
+		position: relative;
+	}
+	#submit {
+		position: absolute;
+		border-radius: 50%;
+		height: 90px;
+		width: 90px;
+		bottom: 15px;
+		left: 25%;
+		right: auto;
+	}
+}
 
+@media(min-width: 1199px) {
+	#submit {
+		left: 21%;
+	}
+}
 
+@media(min-width: 1292px) {
+	.instructions {
+		padding-bottom: 774px;
+	}
+}
