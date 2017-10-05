@@ -1,22 +1,22 @@
 //Declare pitches as objects with semitones (their numeric value within an octave). The '4' in the variable names indicates that these pitches are in octave 4 of the keyboard. A full implementation of this app would involve mapping all 88 keys from A0 - C9 rather than the 13 that represent the complete octave.
 
-var c4 =      {semitone: 1};
-var dFlat4 =  {semitone: 2};
-var d4 =      {semitone: 3};
-var eFlat4 =  {semitone: 4};
-var e4 =      {semitone: 5};
-var f4 =      {semitone: 6};
-var gFlat4 =  {semitone: 7};
-var g4 =      {semitone: 8};
-var aFlat4 =  {semitone: 9};
-var a4 =      {semitone: 10};
-var bFlat4 =  {semitone: 11};
-var b4 =      {semitone: 12};
-var c5 =      {semitone: 13};
+var c4 =      {semitone: 1, canPlay: false};
+var dFlat4 =  {semitone: 2, canPlay: false};
+var d4 =      {semitone: 3, canPlay: false};
+var eFlat4 =  {semitone: 4, canPlay: false};
+var e4 =      {semitone: 5, canPlay: false};
+var f4 =      {semitone: 6, canPlay: false};
+var gFlat4 =  {semitone: 7, canPlay: false};
+var g4 =      {semitone: 8, canPlay: false};
+var aFlat4 =  {semitone: 9, canPlay: false};
+var a4 =      {semitone: 10, canPlay: false};
+var bFlat4 =  {semitone: 11, canPlay: false};
+var b4 =      {semitone: 12, canPlay: false};
+var c5 =      {semitone: 13, canPlay: false};
 
-var pitchArray = [c4, dFlat4, d4, eFlat4, e4, f4, gFlat4, g4, aFlat4, g4, aFlat4, a4, bFlat4, b4, c5];
+var pitchArray = [c4, dFlat4, d4, eFlat4, e4, f4, gFlat4, g4, aFlat4, a4, bFlat4, b4, c5];
 
-//Grab audio elements from the DOM and assign them as properties to each corresponding pitch object.
+// Grab audio elements from the DOM and assign them as properties to each corresponding pitch object.
 c4.audio =      document.getElementById('c4');
 dFlat4.audio =  document.getElementById('dFlat4');
 d4.audio =      document.getElementById('d4');
@@ -30,6 +30,20 @@ a4.audio =      document.getElementById('a4');
 bFlat4.audio =  document.getElementById('bFlat4');
 b4.audio =      document.getElementById('b4');
 c5.audio =      document.getElementById('c5');
+
+// c4.audio =      new Audio('./assets/audio/c4.wav');
+// dFlat4.audio =  new Audio('./assets/audio/dFlat4.wav');
+// d4.audio =      new Audio('./assets/audio/d4.wav');
+// eFlat4.audio =  new Audio('./assets/audio/eFlat4.wav');
+// e4.audio =      new Audio('./assets/audio/e4.wav');
+// f4.audio =      new Audio('./assets/audio/f4.wav');
+// gFlat4.audio =  new Audio('./assets/audio/gFlat4.wav');
+// g4.audio =      new Audio('./assets/audio/g4.wav');
+// aFlat4.audio =  new Audio('./assets/audio/aFlat4.wav');
+// a4.audio =      new Audio('./assets/audio/a4.wav');
+// bFlat4.audio =  new Audio('./assets/audio/bFlat4.wav');
+// b4.audio =      new Audio('./assets/audio/b4.wav');
+// c5.audio =      new Audio('./assets/audio/c5.wav');
 
 //Values that are undefined until randomly generated.
 var randomPitch = {};
@@ -53,18 +67,57 @@ var player1Score; //set equal to current player's score at end of timer; we only
 var numberOfTimesPlayed = 0; //keeps track of how many times the game has been played; when 2, the game ends and scores are checked against each other.
 
 //DOM stuff that needs to be accessible to multiple functions
+var titleModal = document.querySelector('.blur');
 var gameInterface = document.querySelector('.game_interface');
 var qualityButtons = document.querySelectorAll('.quality');
 var numberButtons = document.querySelectorAll('.interval');
 var topSection = document.querySelector('.top');
 var bottomSection = document.querySelector('.bottom');
-var player1DoneModal = document.querySelectorAll('.blur')[1];
-var player2Modal = document.querySelectorAll('.blur')[4];
+var player1DoneModal = document.querySelectorAll('.blur')[2];
+var player2Modal = document.querySelectorAll('.blur')[5];
 var body = document.querySelector('.blurred_content'); //for blur effect
 
 //Show a game instructions dialog, trigger beginning of game when button is clicked.
+function titleSequence() {
+  titleModal.style.display = 'block';
+  titleModal.addEventListener('click', initSounds);
+
+}
+
+function initSounds() {
+  titleModal.removeEventListener('click', initSounds);
+  pitchArray.forEach( (pitch, index) => {
+    pitch.audio.load();
+    pitch.audio.oncanplaythrough = function() {
+      pitch.canPlay = true;
+      console.log(pitch);
+    };
+  });
+  titleModal.style.display = 'none';
+  startGame();
+}
+
+
+
+
+
+
+//     pitch.audio.load();
+//     pitch.audio.addEventListener('canplaythrough', function() {
+//       pitch.canPlay = true;
+//       this.removeEventListener('canplaythrough', arguments.callee);
+//     });
+//     console.log(pitch.audio.readyState);
+//   });
+//
+//   var waitForAudio = window.setInterval(canPlayAllElements, 1);
+//
+//
+
+
+
 function startGame() {
-  var instructionsModal = document.querySelector('.blur');
+  var instructionsModal = document.querySelectorAll('.blur')[1];
   instructionsModal.style.display = 'block';
   body.classList.add('blurred_content');
   var instrModalButton = document.querySelector('.instructions button');
@@ -114,7 +167,7 @@ function assignPitches() {
   pitch1 = objectifyRandomPitch(randomNum0Thru12());
   pitch2 = objectifyRandomPitch(randomNum0Thru12());
   console.log('pitch1: ' + pitch1.semitone + ', pitch2: ' + pitch2.semitone);
-  playPitches(pitch1, pitch2);
+  playPitches();
 }
 
 //Play the pitches to the user as the prompt for each question.
@@ -277,7 +330,7 @@ function checkUserAnswer() {
   for (var i = 0; i < acceptableAnswers.length; i++) {
     if (userAnswer.quality == acceptableAnswers[i].quality && userAnswer.number == acceptableAnswers[i].number) {
       console.log('CORRECT');
-      var correctModal = document.querySelectorAll('.blur')[2];
+      var correctModal = document.querySelectorAll('.blur')[3];
       correctModal.style.display = 'block';
       isCorrect = true;
       break;
@@ -290,7 +343,7 @@ function checkUserAnswer() {
       score.innerText++;
   } else {
     console.log('INCORRECT');
-    var incorrectModal = document.querySelectorAll('.blur')[3];
+    var incorrectModal = document.querySelectorAll('.blur')[4];
     incorrectModal.style.display = 'block';
     setTimeout(function() {
       incorrectModal.style.display = 'none';
@@ -327,7 +380,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 60;
+  timerElement.textContent = 5;
   countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
@@ -338,7 +391,7 @@ function startTimer() {
 }
 
 function loadPlayerTwoUI() {
-  var timesUpButton = document.querySelector('.times_up button');
+  var timesUpModal = document.querySelector('.times_up');
   var replayButton = document.getElementById('replay');
   var playerStatus = document.querySelector('.inactive_player_status');
   var scoreLabelP1 = document.querySelector('.player_1_score');
@@ -378,10 +431,9 @@ function loadPlayerTwoUI() {
         }
       }, 1001);
       var playAgainButton = document.getElementById('play_again');
+      playAgainButton.style.display = 'block';
       playAgainButton.addEventListener('click', function() {
-        reset();
-        startGame();
-        playAgainButton.removeEventListener('click', arguments.callee);
+        location.reload();
       });
       return;
     } else {
@@ -413,10 +465,5 @@ function loadPlayerTwoUI() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-  startGame();
-
-
-
-
-
+  titleSequence();
 });
