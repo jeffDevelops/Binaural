@@ -13,7 +13,7 @@
 html {
 	width: 100%;
 	height: 100%;
-	overflow: auto;
+	overflow: hidden;
 	box-sizing: border-box;
 }
 
@@ -25,10 +25,30 @@ body {
 
 .landing_container {
 	background: #fff;
-	width: 100vw;
-	height: 100vh;
-	margin: 1.5vh auto 1.5vh auto;
-	border: 1px solid transparent;
+	width: 100%;
+	height: 100%;
+}
+
+.landing_content {
+	position: relative;
+	height: 90%;
+	min-height: 500px;
+	width: 100%;
+}
+
+#landing nav {
+	width: 100%;
+	height: 10%;
+}
+
+#landing nav ul {
+	padding: 0 25px;
+	margin: 0;
+}
+
+#landing nav ul li {
+	padding: 25px 0;
+	margin: 0 15px;
 }
 
 .col-md-12, .col-lg-12, .col-md-11, .col-lg-11 .col-md-8, .col-lg-8, .col-md-4, .col-lg-4, .col-md-3, .col-lg-3, .col-md-1, .col-lg-1, .col-xs-6, .col-xs-4, .col-xs-3, .col-xs-2 {
@@ -46,7 +66,6 @@ nav ul {
 	display: block;
 	list-style: none; /* removes bullets */
 	text-align: right;
-	padding: 0;
 }
 
 nav ul li {
@@ -71,19 +90,26 @@ nav ul li a:hover {
 	transition: color .6s;
 }
 
-
 .logo_image {
+	position: absolute;
 	display: block;
-	margin: 33vh auto;
-	width: 12vw;
+	bottom: 300px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 20%;
+	min-width: 200px;
 }
 
 .logo_large {
 	position: absolute;
-	bottom: 10vh;
-	left: 10vw;
+	bottom: 75px;
+	left: 0;
+	right: 0;
+	margin: auto;
 	font-size: 5em;
 	font-weight: 300;
+	text-align: center;
 	background-image: -webkit-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
 	background-image: -moz-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
 	background-image: -ms-linear-gradient(right,rgb(164, 0, 255), rgb(254, 0, 66));
@@ -92,6 +118,16 @@ nav ul li a:hover {
 	color: transparent;
 	-webkit-background-clip: text; /* Gradient-text is only suuported in Webkit. */
 	background-clip: text;
+}
+
+@media(min-width: 1200px) {
+	.logo_image {
+		bottom: 55vh;
+	}
+	.logo_large {
+		left: 75px;
+		right: auto;
+	}
 }
 
 .tagline {
@@ -105,6 +141,11 @@ nav ul li a:hover {
 
 #about .logo_large {
 	position: static;
+}
+
+#about nav ul li {
+	padding: 0;
+	margin: 0 50px;
 }
 
 .content_block {
@@ -123,6 +164,21 @@ nav ul li a:hover {
 	letter-spacing: .05em;
 	line-height: 1.5em;
 	color: rgb(164, 0, 255);
+}
+
+@media(max-width: 994px) {
+	#about .logo_large {
+		text-align: center;
+	}
+	#about .logo_large.subheading {
+		text-align: left;
+	}
+  .tagline {
+		display: block;
+		width: 70%;
+		margin: 0 auto;
+		text-align: center;
+	}
 }
 
 
@@ -168,6 +224,7 @@ nav ul li a:hover {
 
 .game_nav ul {
 	margin: 0;
+	padding: 0;
 }
 
 .game_nav ul li {
@@ -287,6 +344,7 @@ main.col-lg-6.col-md-6 {
 .top {
 	height: 400px;
 	width: 100%;
+	border-top: 1px solid transparent;
 	border-left: 2px solid #fff;
 	border-right: 2px solid #fff;
 	background: rgb(164, 0, 255);
@@ -562,6 +620,17 @@ div.col-md-6.col-lg-6.interface_column {
 
 /*MODAL STYLES*/
 
+.init {
+	font-size: 5em;
+	margin-top: 250px;
+}
+
+.instructions .init_p {
+	font-weight: 200;
+	margin-top: 150px;
+	text-align: center;
+}
+
 .instructions {
 	position: absolute;
 	z-index: 2;
@@ -591,7 +660,8 @@ div.col-md-6.col-lg-6.interface_column {
 	top: 0;
 	left: 0;
 	position: absolute;
-	background: rgba(0, 0, 0, .6);
+	background: #fff;
+	cursor: pointer;
 }
 
 body:not(.blur) .blurred_content {
@@ -636,7 +706,7 @@ body:not(.blur) .blurred_content {
 
 .instructions.times_up h1 {
 	text-align: center;
-	margin: 60px auto;
+	margin: 340px auto;
 }
 
 .correctness {
@@ -645,19 +715,45 @@ body:not(.blur) .blurred_content {
 
 .correctness h1 {
 	text-align: center;
-	margin: 60px auto;
+	margin: 33vh auto;
+}
+
+#play_again {
+	display: none;
+	text-align: center;
+	margin: 0 auto;
+	height: 70px;
+	width: 200px;
+	border-radius: 5px;
+	background-image: none;
+	background:#fff;
+	border: 2px solid rgb(200, 0, 150);
+	color: rgb(200, 0, 150);
+	font-family: 'Lato', sans-serif;
+	font-size: 1.2em;
+	transition: all .3s;
+	outline: none;
+}
+
+#play_again:hover {
+	color: #fff;
+	background-image: -webkit-linear-gradient(right, rgba(164, 0, 255, 1), rgba(254, 0, 66, 1));
+	background-image: -o-linear-gradient(right, rgba(164, 0, 255, 1), rgba(254, 0, 66, 1));
+	background-image: linear-gradient(right, rgba(164, 0, 255, 1), rgba(254, 0, 66, 1));
+	border: none;
+	transition: all .5s;
 }
 
 /*Injected with JS innerHTML*/
 
-.inactive_player {
-	padding-top: 25px;
+.inactive_player.top .inactive_player.bottom {
+	padding-top: 20px;
 }
 
 .inactive_player_status {
 	display: block;
 	width: 70%;
-	margin: 0 auto 0 auto;
+	margin: 35px auto 0 auto;
 	text-align: right;
 	font-style: italic;
 	line-height: 1em;
