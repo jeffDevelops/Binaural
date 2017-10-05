@@ -380,7 +380,7 @@ function checkTimer() {
 //Start the game countdown
 function startTimer() {
   timerElement = document.getElementById('timer');
-  timerElement.textContent = 5;
+  timerElement.textContent = 60;
   countdown = setInterval(function() {
     if (timerElement.textContent > 0) {
       timerElement.textContent--;
