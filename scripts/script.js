@@ -1,5 +1,4 @@
 //Declare pitches as objects with semitones (their numeric value within an octave). The '4' in the variable names indicates that these pitches are in octave 4 of the keyboard. A full implementation of this app would involve mapping all 88 keys from A0 - C9 rather than the 13 that represent the complete octave.
-
 var c4 =      {semitone: 1, canPlay: false};
 var dFlat4 =  {semitone: 2, canPlay: false};
 var d4 =      {semitone: 3, canPlay: false};
